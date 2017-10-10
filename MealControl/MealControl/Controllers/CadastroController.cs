@@ -65,7 +65,7 @@ namespace MealControl.Controllers
                 //    return new HttpStatusCodeResult(HttpStatusCode.Accepted);//202            
                 //}
 
-                parent = service.Save(parent);                
+                parent = service.Insert(parent);                
 
                 //Send email to all admins advising about the new user waiting for their evaluation
                 var subject = "Novo usuário cadastrado - Aguardando liberação";

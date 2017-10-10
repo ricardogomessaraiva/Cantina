@@ -19,3 +19,22 @@ C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\UserTest\bin\Debug\EntityFr
 C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\UserTest\obj\Debug\UserUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\UserTest\obj\Debug\UserTest.dll
 C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\UserTest\obj\Debug\UserTest.pdb
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\UserTest.dll.config
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\UserTest.dll
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\UserTest.pdb
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\BCrypt.Net.dll
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\Contexts.dll
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\EntityFramework.dll
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\EntityFramework.SqlServer.dll
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\Models.dll
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\Services.dll
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\Contexts.pdb
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\Models.pdb
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\Services.pdb
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\BCrypt.Net.xml
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\EntityFramework.xml
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\bin\Debug\EntityFramework.SqlServer.xml
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\obj\Debug\UserUnitTests.csprojResolveAssemblyReference.cache
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\obj\Debug\UserTest.dll
+D:\PROJETOS PF\git\Cantina\MealControl\UserTest\obj\Debug\UserTest.pdb

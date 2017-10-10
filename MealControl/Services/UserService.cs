@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Data.Entity.Migrations;
 
 namespace Services
 {
@@ -13,25 +14,25 @@ namespace Services
     {
         readonly MealEntities Entity = new MealEntities();
 
-        public ICollection<DbValidationError> Validate(Parent user)
+        public ICollection<DbValidationError> Validate(Parent parent)
         {
-            Entity.Parent.Add(user);
+            Entity.Parent.Add(parent);
             var errors = new List<DbValidationError>();
 
             if (Entity.GetValidationErrors().Count() > 0)
                 errors.AddRange(Entity.GetValidationErrors().First().ValidationErrors);
 
-            if (user.Email != null)
+            if (parent.Email != null)
             {
-                var isValid = Regex.IsMatch(user.Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+                var isValid = Regex.IsMatch(parent.Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
                 if (!isValid)
                     errors.Add(new DbValidationError("Email", "Digite um e-mail válido."));
             }
 
-            if (user.Status.Id == 3 && Entity.Parent.Any(s => s.Email == user.Email))
+            if (parent.Status.Id == 3 && Entity.Parent.Any(s => s.Email == parent.Email))
                 errors.Add(new DbValidationError("Email", "Já existe um usuário cadastrado com este email."));
 
-            user.Students.ForEach(s =>
+            parent.Students.ForEach(s =>
             {
                 if (s.BirthDate == DateTime.MinValue || s.BirthDate.Date >= DateTime.Now.Date)
                     errors.Add(new DbValidationError("Birthdate", "Data nascimento inválida."));
@@ -46,31 +47,40 @@ namespace Services
             return errors;
         }
 
-        public Parent Save(Parent parent)
+        public Parent Insert(Parent parent)
         {
-            //var entity = new MealEntities();
-            var entity = new MealEntities();
-            var model = new Parent();
-            parent.Students.ForEach(s => s.Period = entity.Period.FirstOrDefault(p => p.Id == s.Period.Id));
-            parent.Status = entity.Status.First(s => s.Id == parent.Status.Id);
-            var erros = Validate(parent);
-
-            if (parent.Id != 0)
-            {
-                model = entity.Parent.Find(parent.Id);
-                entity.Entry(model).CurrentValues.SetValues(parent);                                
-
-                //Entity.Parent.Attach(parent);
-                //Entity.Entry(parent).State = System.Data.Entity.EntityState.Modified;                
-
-                var errors = entity.GetValidationErrors().ToList();
-                entity.SaveChanges();
-                return model;
-            }
-
-            model = Entity.Parent.Add(parent);
+            var model = Entity.Parent.Add(parent);
             Entity.SaveChanges();
             return model;
+        }
+
+        public Parent Update(Parent parent)
+        {
+            var model = Entity.Parent.Find(parent.Id);
+            var _parent = new Parent
+            {
+                Id = parent.Id,
+                CreatedAt = parent.CreatedAt,
+                Name = parent.Name,
+                UserName = parent.UserName,
+                Password = parent.Password,
+                Email = parent.Email,
+                Phone = parent.Phone,
+                Status = Entity.Status.Find(parent.Status.Id),
+                Students = parent.Students
+            };
+
+            //Entity.Parent.AddOrUpdate(_parent);
+            //Entity.SaveChanges();
+
+            //Entity.Parent.Add(_parent);
+            //Entity.Entry(_parent).State = System.Data.Entity.EntityState.Modified;
+            //Entity.SaveChanges();            
+
+            //Entity.Entry(model).CurrentValues.SetValues(_parent);
+            //Entity.SaveChanges();
+            
+            return _parent;
         }
 
         public Parent GetUser(Parent parent)
@@ -87,33 +97,33 @@ namespace Services
 
         public List<Parent> GetParents(Parent parent)
         {
-            if (parent.Status != null)
+            if (parent.Status == null)
             {
-                if (parent.Status.Description == "Todos")
-                {
-                    return Entity.Parent
-                          .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&
-                                      x.UserName.Contains((parent.UserName != null ? parent.UserName : x.UserName)) &&
-                                      x.Email.Contains((parent.Email != null ? parent.Email : x.Email)))
-                           .OrderBy(x => x.CreatedAt)
-                           .ToList();
-                }
-
                 return Entity.Parent
-                        .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&
-                                    x.UserName.Contains((parent.UserName != null ? parent.UserName : x.UserName)) &&
-                                    x.Email.Contains((parent.Email != null ? parent.Email : x.Email)) &&
-                                    x.Status.Description == (parent.Status.Description != null ? parent.Status.Description : x.Status.Description))
-                        .OrderBy(x => x.CreatedAt)
-                        .ToList();
+                            .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&
+                                        x.UserName.Contains((parent.UserName != null ? parent.UserName : x.UserName)) &&
+                                        x.Email.Contains((parent.Email != null ? parent.Email : x.Email)))
+                            .OrderBy(x => x.CreatedAt)
+                            .ToList();
+            }
+
+            if (parent.Status.Description.ToLower() == "todos")
+            {
+                return Entity.Parent
+                  .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&
+                              x.UserName.Contains((parent.UserName != null ? parent.UserName : x.UserName)) &&
+                              x.Email.Contains((parent.Email != null ? parent.Email : x.Email)))
+                   .OrderBy(x => x.CreatedAt)
+                   .ToList();
             }
 
             return Entity.Parent
-                        .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&
-                                    x.UserName.Contains((parent.UserName != null ? parent.UserName : x.UserName)) &&
-                                    x.Email.Contains((parent.Email != null ? parent.Email : x.Email)))
-                        .OrderBy(x => x.CreatedAt)
-                        .ToList();
+                    .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&
+                                x.UserName.Contains((parent.UserName != null ? parent.UserName : x.UserName)) &&
+                                x.Email.Contains((parent.Email != null ? parent.Email : x.Email)) &&
+                                x.Status.Description == (parent.Status.Description != null ? parent.Status.Description : x.Status.Description))
+                    .OrderBy(x => x.CreatedAt)
+                    .ToList();
         }
 
         public List<Status> GetStatus()

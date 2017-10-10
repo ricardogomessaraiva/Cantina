@@ -33,8 +33,9 @@
             });
     }
 
-    $scope.save = function (parent) {        
-        $http.post('Cadastrados/Save', { parent: parent }).then(function success(response) {
+    $scope.update = function (parent) {        
+        $http.post('Cadastrados/Update', { parent: parent })
+            .then(function success(response) {
 
         }), function error(response) {
             $scope.errors.push(response.statusText);
