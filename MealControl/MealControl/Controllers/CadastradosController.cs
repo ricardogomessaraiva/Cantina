@@ -47,13 +47,22 @@ namespace MealControl.Controllers
 
         [HttpPost]
         public ActionResult Save(Parent parent)
-        {
+        {           
+            var entity = new MealEntities();
+            var model = entity.Parent.Find(parent.Id);
+            entity.Entry(model).CurrentValues.SetValues(parent);
+            var errors = entity.GetValidationErrors().ToList();
+            entity.SaveChanges();
 
+            //Entity.Parent.Attach(parent);
+            //Entity.Entry(parent).State = System.Data.Entity.EntityState.Modified;
+            //entity.SaveChanges();
+            
             //var errors = service.Validate(parent);
 
             return Json(new
             {
-                parent = service.Save(parent)
+                parent = parent// service.Save(parent)
             });
         }
     }

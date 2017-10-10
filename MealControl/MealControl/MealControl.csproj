@@ -450,6 +450,7 @@
     <Content Include="Content\themes\assets\global\scripts\metronic.js" />
     <Content Include="Content\themes\assets\logo-big.png" />
     <Content Include="Scripts\mask.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

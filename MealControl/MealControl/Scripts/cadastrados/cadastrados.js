@@ -24,8 +24,8 @@
             .then(function success(response) {
                 $scope.parentList = response.data.parentList;
                 $scope.parentList.forEach(function (parent, pos) {
-                    parent.Students.forEach(function (student) {
-                        student.BirthDate = $filter('convertToDate')(student.BirthDate, 'dd-MM-yyyy HH:mm');
+                    parent.Students.forEach(function (student) {                        
+                        student.BirthDate = moment(student.BirthDate).format('L');
                     });
                 });
             }, function error(response) {
