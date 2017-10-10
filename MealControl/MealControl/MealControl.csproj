@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B37772C9-9CA4-4144-919F-348705CAAA96}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MealControl</RootNamespace>
+    <AssemblyName>MealControl</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=0.1.4141.31969, Culture=neutral, PublicKeyToken=f3bc8f8c31beeb49, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\assets\admin\pages\img\bg-opacity.png" />
+    <Content Include="Content\themes\assets\admin\pages\img\bg-white-lock.png" />
+    <Content Include="Content\themes\assets\admin\pages\img\bg-white.png" />
+    <Content Include="Content\themes\assets\admin\pages\img\inbox-nav-arrow-blue.png" />
+    <Content Include="Content\themes\assets\admin\pages\media\bg\1.jpg" />
+    <Content Include="Content\themes\assets\admin\pages\media\bg\2.jpg" />
+    <Content Include="Content\themes\assets\admin\pages\media\bg\3.jpg" />
+    <Content Include="Content\themes\assets\admin\pages\media\bg\4.jpg" />
+    <Content Include="Content\themes\assets\global\img\loading-spinner-blue.gif" />
+    <Content Include="Content\themes\assets\global\img\loading-spinner-default.gif" />
+    <Content Include="Content\themes\assets\global\img\loading-spinner-grey.gif" />
+    <Content Include="Content\themes\assets\global\plugins\backstretch\jquery.backstretch.js" />
+    <Content Include="Content\themes\assets\global\plugins\backstretch\jquery.backstretch.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap-modal\css\bootstrap-modal-bs3patch.css" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap-modal\css\bootstrap-modal.css" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap-modal\js\bootstrap-modal.js" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap-modal\js\bootstrap-modalmanager.js" />
+    <Content Include="Content\themes\assets\global\plugins\countdown\jquery.countdown.js" />
+    <Content Include="Content\themes\assets\global\plugins\countdown\jquery.countdown.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\countdown\plugin\countdownBasic.html" />
+    <Content Include="Content\themes\assets\global\plugins\countdown\plugin\countdownGlowing.gif" />
+    <Content Include="Content\themes\assets\global\plugins\countdown\plugin\countdownLED.png" />
+    <Content Include="Content\themes\assets\global\plugins\countdown\plugin\jquery.countdown-pt-BR.js" />
+    <Content Include="Content\themes\assets\global\plugins\countdown\plugin\jquery.countdown.css" />
+    <Content Include="Content\themes\assets\global\plugins\countdown\plugin\jquery.countdown.js" />
+    <Content Include="Content\themes\assets\global\plugins\countdown\plugin\jquery.countdown.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Mail.html" />
+    <Content Include="Scripts\angular-bootstrap.js" />
+    <Content Include="Scripts\angular-modules.js" />
+    <Content Include="Scripts\angular-pagination.js" />
+    <Content Include="Scripts\angular-ui\datetimepicker.js" />
+    <Content Include="Scripts\angular-ui\locale_pt-br.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\angular.min-1.4.6.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\cadastrados\cadastrados.js" />
+    <Content Include="Scripts\cadastro\cadastroApp.js" />
+    <Content Include="Scripts\directives\masks.directives.js" />
+    <Content Include="Scripts\dirPagination.js" />
+    <Content Include="Scripts\home\homeCtrl.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\login\loginApp.js" />
+    <Content Include="Content\themes\assets\admin\css\custom.css" />
+    <Content Include="Content\themes\assets\admin\css\layout.css" />
+    <Content Include="Content\themes\assets\admin\css\themes\blue.css" />
+    <Content Include="Content\themes\assets\admin\css\themes\darkblue.css" />
+    <Content Include="Content\themes\assets\admin\css\themes\default.css" />
+    <Content Include="Content\themes\assets\admin\css\themes\grey.css" />
+    <Content Include="Content\themes\assets\admin\css\themes\light.css" />
+    <Content Include="Content\themes\assets\admin\css\themes\light2.css" />
+    <Content Include="Content\themes\assets\admin\layout\css\custom.css" />
+    <Content Include="Content\themes\assets\admin\layout\css\layout.css" />
+    <Content Include="Content\themes\assets\admin\layout\css\themes\blue.css" />
+    <Content Include="Content\themes\assets\admin\layout\css\themes\darkblue.css" />
+    <Content Include="Content\themes\assets\admin\layout\css\themes\default.css" />
+    <Content Include="Content\themes\assets\admin\layout\css\themes\grey.css" />
+    <Content Include="Content\themes\assets\admin\layout\css\themes\light.css" />
+    <Content Include="Content\themes\assets\admin\layout\css\themes\light2.css" />
+    <Content Include="Content\themes\assets\admin\layout\img\ajax-loading.gif" />
+    <Content Include="Content\themes\assets\admin\layout\img\ajax-modal-loading.gif" />
+    <Content Include="Content\themes\assets\admin\layout\img\arrow-down.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar1.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar10.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar11.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar1_small.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar2.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar3.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar3_small.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar4.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar5.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar6.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar7.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar8.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\avatar9.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\hor-menu-red-arrow.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\icon-color-close.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\icon-color.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\icon-img-down.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\icon-img-up.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\inbox-nav-arrow-blue.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\loading-spinner-blue.gif" />
+    <Content Include="Content\themes\assets\admin\layout\img\loading-spinner-default.gif" />
+    <Content Include="Content\themes\assets\admin\layout\img\loading-spinner-grey.gif" />
+    <Content Include="Content\themes\assets\admin\layout\img\loading.gif" />
+    <Content Include="Content\themes\assets\admin\layout\img\logo-big-white.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\logo-big.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\logo-invert.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\logo.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\menu-toggler.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\photo1.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\photo2.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\photo3.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\remove-icon-small.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\search_icon_light.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar-menu-arrow-reverse.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar-menu-arrow-right.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar-menu-arrow.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_arrow_icon_light.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_arrow_icon_light_rtl.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_inline_toggler_icon_blue.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_inline_toggler_icon_darkblue.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_inline_toggler_icon_default.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_inline_toggler_icon_grey.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_inline_toggler_icon_light.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_inline_toggler_icon_light2.jpg" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_toggler_icon_blue.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_toggler_icon_darkblue.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_toggler_icon_default.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_toggler_icon_grey.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_toggler_icon_light.png" />
+    <Content Include="Content\themes\assets\admin\layout\img\sidebar_toggler_icon_light2.png" />
+    <Content Include="Content\themes\assets\admin\layout\scripts\demo.js" />
+    <Content Include="Content\themes\assets\admin\layout\scripts\layout.js" />
+    <Content Include="Content\themes\assets\admin\layout\scripts\quick-sidebar.js" />
+    <Content Include="Content\themes\assets\admin\pages\css\about-us.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\blog.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\coming-soon.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\error.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\image-crop.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\inbox.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\invoice.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\lock.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\lock2.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\login-soft.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\login.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\login2.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\login3.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\news.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\portfolio.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\pricing-table.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\pricing-tables.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\profile-old.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\profile.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\search.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\tasks.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\timeline-old.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\timeline.css" />
+    <Content Include="Content\themes\assets\admin\pages\css\todo.css" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\calendar.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\charts-amcharts.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\charts-flotcharts.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\coming-soon.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\components-context-menu.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\components-dropdowns.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\components-editors.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\components-form-tools.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\components-form-tools2.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\components-ion-sliders.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\components-jqueryui-sliders.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\components-knob-dials.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\components-nouisliders.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\components-pickers.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\contact-us.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\custom.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ecommerce-index.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ecommerce-orders-view.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ecommerce-orders.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ecommerce-products-edit.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ecommerce-products.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\form-dropzone.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\form-editable.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\form-fileupload.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\form-icheck.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\form-image-crop.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\form-samples.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\form-validation.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\form-wizard.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\inbox.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\index.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\index3.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\lock.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\login-soft.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\login.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\maps-google.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\maps-vector.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\portfolio.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\portlet-draggable.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\profile.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\search.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\table-advanced.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\table-ajax.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\table-editable.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\table-managed.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\table-tree.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\tasks.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\timeline.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\todo.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-alert-dialog-api.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-blockui.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-bootstrap-growl.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-confirmations.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-datepaginator.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-extended-modals.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-general.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-idletimeout.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-nestable.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-notific8.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-toastr.js" />
+    <Content Include="Content\themes\assets\admin\pages\scripts\ui-tree.js" />
+    <Content Include="Content\themes\assets\global\css\components-md.css" />
+    <Content Include="Content\themes\assets\global\css\components-rounded.css" />
+    <Content Include="Content\themes\assets\global\css\components.css" />
+    <Content Include="Content\themes\assets\global\css\plugins-md.css" />
+    <Content Include="Content\themes\assets\global\css\plugins.css" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-migrate.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\additional-methods.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\additional-methods.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\jquery.validate.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\jquery.validate.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ar.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ar.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_bg.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_bg.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ca.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ca.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_cs.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_cs.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_da.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_da.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_de.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_de.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_el.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_el.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_es.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_es.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_es_AR.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_es_AR.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_et.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_et.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_eu.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_eu.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_fa.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_fa.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_fi.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_fi.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_fr.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_fr.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_gl.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_gl.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_he.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_he.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_hr.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_hr.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_hu.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_hu.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_id.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_id.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_is.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_is.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_it.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_it.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ja.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ja.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ka.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ka.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_kk.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_kk.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ko.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ko.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_lt.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_lt.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_lv.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_lv.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_my.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_my.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_nl.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_nl.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_no.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_no.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_pl.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_pl.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_pt_BR.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_pt_BR.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_pt_PT.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_pt_PT.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ro.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ro.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ru.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_ru.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_si.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_si.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_sk.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_sk.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_sl.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_sl.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_sr.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_sr.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_sr_lat.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_sr_lat.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_sv.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_sv.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_th.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_th.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_tj.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_tj.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_tr.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_tr.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_uk.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_uk.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_vi.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_vi.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_zh.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_zh.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_zh_TW.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\messages_zh_TW.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\methods_de.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\methods_de.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\methods_es_CL.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\methods_es_CL.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\methods_fi.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\methods_fi.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\methods_nl.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\methods_nl.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\methods_pt.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\js\localization\methods_pt.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\jquery.min.js" />
+    <Content Include="Content\themes\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.dev.svg" />
+    <Content Include="Content\themes\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Content\themes\assets\global\plugins\simple-line-icons\icons-lte-ie7.js" />
+    <Content Include="Content\themes\assets\global\plugins\simple-line-icons\License.txt" />
+    <Content Include="Content\themes\assets\global\plugins\simple-line-icons\Readme.txt" />
+    <Content Include="Content\themes\assets\global\plugins\simple-line-icons\simple-line-icons.css" />
+    <Content Include="Content\themes\assets\global\plugins\simple-line-icons\simple-line-icons.min.css" />
+    <Content Include="Content\themes\assets\global\plugins\uniform\css\uniform.default.css" />
+    <Content Include="Content\themes\assets\global\plugins\uniform\css\uniform.default.min.css" />
+    <Content Include="Content\themes\assets\global\plugins\uniform\images\bg-input-focus.png" />
+    <Content Include="Content\themes\assets\global\plugins\uniform\images\bg-input.png" />
+    <Content Include="Content\themes\assets\global\plugins\uniform\images\sprite.png" />
+    <Content Include="Content\themes\assets\global\plugins\uniform\images\sprite_original.png" />
+    <Content Include="Content\themes\assets\global\plugins\uniform\jquery.uniform.js" />
+    <Content Include="Content\themes\assets\global\plugins\uniform\jquery.uniform.min.js" />
+    <Content Include="Content\themes\assets\global\scripts\datatable.js" />
+    <Content Include="Content\themes\assets\global\scripts\metronic.js" />
+    <Content Include="Content\themes\assets\logo-big.png" />
+    <Content Include="Scripts\mask.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CadastradosController.cs" />
+    <Compile Include="Controllers\CadastroController.cs" />
+    <Compile Include="Controllers\ConfirmacaoController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\Mailer.cs" />
+    <Compile Include="Models\Repository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\animated.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\core.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\icons.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\larger.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\list.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\mixins.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\path.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\stacked.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\less\variables.less" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_animated.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_core.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_list.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_path.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\themes\assets\global\plugins\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\themes\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.eot" />
+    <Content Include="Content\themes\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Content\themes\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Content\themes\assets\global\plugins\uniform\css\uniform.default.scss" />
+    <Content Include="Content\themes\assets\global\plugins\uniform\README.md" />
+    <Content Include="Content\themes\assets\global\css\components-md.css.map" />
+    <Content Include="Content\themes\assets\global\plugins\jquery-validation\README.md" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\SideMenu.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Cadastro\Index.cshtml" />
+    <Content Include="Content\themes\assets\global\plugins\backstretch\LICENSE-MIT" />
+    <Content Include="Content\themes\assets\global\plugins\backstretch\README.md" />
+    <Content Include="Views\Confirmacao\Index.cshtml" />
+    <Content Include="Views\Cadastrados\Index.cshtml" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap-modal\LICENSE" />
+    <Content Include="Content\themes\assets\global\plugins\bootstrap-modal\README.md" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\themes\assets\admin\layout2\" />
+    <Folder Include="Content\themes\assets\admin\layout4\" />
+    <Folder Include="Content\themes\assets\global\plugins\jquery-slimscroll\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Contexts\Contexts.csproj">
+      <Project>{c2aeccc7-b8b4-4d5f-ade6-692c9907b388}</Project>
+      <Name>Contexts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{85bfd1c2-36ba-4896-8e26-8746da9588c8}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{8211083e-77de-4155-ac84-73a1d0d87419}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53180</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53180/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

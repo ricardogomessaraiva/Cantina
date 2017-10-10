@@ -1,0 +1,115 @@
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\MealControl.dll.config
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\MealControl.dll
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\MealControl.pdb
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Helpers.dll
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Mvc.dll
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Razor.dll
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Webpages.Deployment.dll
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Webpages.dll
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Webpages.Razor.dll
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Razor.xml
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Webpages.xml
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Webpages.Deployment.xml
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Webpages.Razor.xml
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Helpers.xml
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\bin\System.Web.Mvc.xml
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\obj\Debug\MealControl.csprojResolveAssemblyReference.cache
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\obj\Debug\MealControl.dll
+D:\PROJETOS PF\Vo Chiquita\MealControl\MealControl\obj\Debug\MealControl.pdb
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\MealControl.dll.config
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\MealControl.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\MealControl.pdb
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\BCrypt.Net.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\Contexts.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\EntityFramework.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\EntityFramework.SqlServer.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\Models.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\MySql.Data.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\MySql.Data.Entity.EF6.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Helpers.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Mvc.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Razor.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Deployment.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Webpages.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Razor.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\Contexts.pdb
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\Models.pdb
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\BCrypt.Net.xml
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\EntityFramework.xml
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\EntityFramework.SqlServer.xml
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Razor.xml
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Webpages.xml
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Deployment.xml
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Razor.xml
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Helpers.xml
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\System.Web.Mvc.xml
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\obj\Debug\MealControl.csprojResolveAssemblyReference.cache
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\obj\Debug\MealControl.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\obj\Debug\MealControl.pdb
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\Services.dll
+C:\Users\IEDA\Documents\Sistemas\Cantina\MealControl\MealControl\bin\Services.pdb
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\MealControl.dll.config
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\MealControl.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\MealControl.pdb
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\BCrypt.Net.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\Contexts.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\EntityFramework.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\EntityFramework.SqlServer.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\Models.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\MySql.Data.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\MySql.Data.Entity.EF6.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\Services.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Helpers.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Mvc.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Razor.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Deployment.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Webpages.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Razor.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\Contexts.pdb
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\Models.pdb
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\Services.pdb
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\BCrypt.Net.xml
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\EntityFramework.xml
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\EntityFramework.SqlServer.xml
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Razor.xml
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Webpages.xml
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Deployment.xml
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Razor.xml
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Helpers.xml
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\bin\System.Web.Mvc.xml
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\obj\Debug\MealControl.csprojResolveAssemblyReference.cache
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\obj\Debug\MealControl.dll
+D:\PROJETOS PF\PROJETOS-PESSOAIS\Cantina\MealControl\MealControl\obj\Debug\MealControl.pdb
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\MealControl.dll.config
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\MealControl.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\MealControl.pdb
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\BCrypt.Net.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\Contexts.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\EntityFramework.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\EntityFramework.SqlServer.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\Models.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\MySql.Data.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\MySql.Data.Entity.EF6.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\Services.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Helpers.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Mvc.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Razor.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Deployment.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Webpages.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Razor.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\Contexts.pdb
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\Models.pdb
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\Services.pdb
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\BCrypt.Net.xml
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\EntityFramework.xml
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\EntityFramework.SqlServer.xml
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Razor.xml
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Webpages.xml
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Deployment.xml
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Webpages.Razor.xml
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Helpers.xml
+D:\PROJETOS PF\Cantina\MealControl\MealControl\bin\System.Web.Mvc.xml
+D:\PROJETOS PF\Cantina\MealControl\MealControl\obj\Debug\MealControl.csprojResolveAssemblyReference.cache
+D:\PROJETOS PF\Cantina\MealControl\MealControl\obj\Debug\MealControl.dll
+D:\PROJETOS PF\Cantina\MealControl\MealControl\obj\Debug\MealControl.pdb

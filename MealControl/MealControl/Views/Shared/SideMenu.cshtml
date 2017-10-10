@@ -1,0 +1,80 @@
+﻿ <!-- BEGIN SIDEBAR -->
+<div ng-cloak class="page-sidebar-wrapper">
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <div class="page-sidebar navbar-collapse collapse">
+        <!-- BEGIN SIDEBAR MENU -->
+        <ul class="page-sidebar-menu page-sidebar-menu-hover-submenu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <li ng-if="User.Type == null" id="home">
+                <a href="Login">
+                    <i class="icon-home"></i>
+                    <span class="title">Página Login</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+            <li ng-if="User.Type != null && User.Type.Id != 3" id="home">
+                <a href="Home">
+                    <i class="icon-home"></i>
+                    <span class="title">Página inicial</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+            <li id="cadastro-usuario">
+                <a href="Cadastro">
+                    <i class="icon-user"></i>
+                    <span class="title">Cadastro</span>
+                    <span class="selected"></span>
+                </a> 
+                <ul ng-if="User.Type != null && User.Type.Id != 3" class="sub-menu">
+                    <li id="cadastro-cadastrados">
+                        <a href="Cadastrados">
+                            <i class="icon-user"></i>
+                            <span class="title">Listar</span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                </ul>                            
+            </li>
+            <li ng-if="User.Type != null && User.Type.Id != 3">
+                <a href="#">
+                    <i class="icon-basket"></i>
+                    <span class="title">Produtos</span>
+                </a>
+            </li>
+            <li ng-if="User.Type != null && User.Type.Id != 3">
+                <a href="#">
+                    <i class="fa fa-dollar"></i>
+                    <span class="title">Créditos</span>
+                </a>
+            </li>
+            <li ng-if="User.Type != null && User.Type.Id != 3">
+                <a href="#">
+                    <i class="icon-diamond"></i>
+                    <span class="title">Relatórios</span>
+                    <span class="arrow "></span>
+                </a>
+            </li>
+            <li ng-if="User.Type != null && User.Type.Id != 3">
+                <a href="javascript:;">
+                    <i class="icon-puzzle"></i>
+                    <span class="title">UI Components</span>
+                    <span class="arrow "></span>
+                </a>
+            </li>
+            <!-- BEGIN ANGULARJS LINK -->
+            <li ng-if="User.Type != null && User.Type.Id != 3"
+                class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="AngularJS version demo">
+                <a>
+                    <i class="icon-paper-plane"></i>
+                    <span class="title">
+                        AngularJS Version
+                    </span>
+                </a>
+            </li>
+            <!-- END ANGULARJS LINK -->
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </div>
+</div>
+<!-- END SIDEBAR -->
+<!--SIDE BAR END-->

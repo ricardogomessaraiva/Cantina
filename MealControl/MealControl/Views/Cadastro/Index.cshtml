@@ -1,0 +1,289 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<script src="~/Scripts/angular-ui/datetimepicker-config.js"></script>*@
+
+<script src="~/Scripts/directives/masks.directives.js"></script>
+<script src="~/Scripts/cadastro/cadastroApp.js"></script>
+
+<div ng-controller="cadastroCtrl">
+    <!-- BEGIN PAGE HEADER BREADCRUMB-->
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-user"></i>
+                <a href="#">Cadastro</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#">Cadastro do usuário</a>
+            </li>
+        </ul>
+    </div>
+    <!-- END PAGE HEADER BREADCRUMB-->
+    <div ng-if="errors.length > 0" class="portlet light">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs font-red-sunglo"></i>
+                    <span class="caption-subject font-red-sunglo bold uppercase">Notificação de erros</span>
+                    <span class="caption-helper">falha ao salvar o cadastro...</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div ng-repeat="error in errors" class="alert alert-danger">
+                    <strong>Erro!</strong> <span ng-bind="error"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <form ng-init="load();" name="formUser" role="form" novalidate>                
+        <!-- FORM User BEGIN -->
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption font-green">
+                    <i class="fa fa-user font-green"></i>
+                    <span class="caption-subject bold uppercase"> Cadastro do Usuário</span>
+                    <span class="caption-helper"></span>
+                </div>
+                <div class="actions">
+                    <a title="Alterar dados salvos" class="btn btn-circle btn-default btn-sm">
+                        <i class="fa fa-pencil"></i> Editar
+                    </a>
+                    <a title="Excluir o cadastro" class="btn btn-circle btn-default btn-sm">
+                        <i class="fa fa-times"></i> Excluir
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-body">
+                    <div class="row">
+                        <!--Filtros-->
+                        <div class="col-md-12" ng-class="{'has-success': formParent.name.$valid, 'has-error': formParent.name.$invalid}">
+                            <label>Nome completo</label>
+                            <div class="input-icon right input-icon-lg">
+                                <i class="fa tooltips" data-original-title="Campo obrigatório" data-container="body"
+                                   ng-class="{'fa-check': formParent.name.$valid, 'fa-exclamation-circle': formParent.name.$invalid}"></i>
+                                <input required name="name" type="text" ng-model="Parent.Name" class="form-control input-lg" placeholder="Nome do responsável">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6" ng-class="{'has-success': formParent.email.$valid, 'has-error': formParent.email.$invalid}">
+                            <label>E-mail de contato</label>
+                            <div class="input-icon right input-icon-lg">
+                                <i class="fa fa-exclamation-circle tooltips" data-original-title="Campo obrigatório" data-container="body"
+                                   ng-class="{'fa-check': formParent.email.$valid, 'fa-exclamation-circle': formParent.email.$invalid}"></i>
+                                <input required name="email" type="text" ng-model="Parent.Email" class="form-control input-lg" placeholder="E-mail para contato">
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-class="{'has-success': formParent.re_email.$valid, 'has-error': formParent.re_email.$invalid}">
+                            <label>Confirmação do Email</label>
+                            <div class="input-icon right input-icon-lg">
+                                <i class="fa fa-exclamation-circle tooltips" data-original-title="Campo obrigatório" data-container="body"
+                                   ng-class="{'fa-check': formParent.re_email.$valid, 'fa-exclamation-circle': formParent.re_email.$invalid}"></i>
+                                <input required name="re_email" type="text" ng-model="retypeEmail" class="form-control input-lg" placeholder="Re-digite o e-mail">
+                            </div>
+                            <span ng-if="((formParent.email.$dirty && formParent.re_email.$dirty) && Parent.Email != retypeEmail)"
+                                  class="label label-warning">
+                                Os e-mails não conferem
+                            </span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4" ng-class="{'has-success': formParent.username.$valid, 'has-error': formParent.username.$invalid}">
+                            <label>Usuário de acesso</label>
+                            <div class="input-icon right input-icon-lg">
+                                <i class="fa fa-exclamation-circle tooltips" data-original-title="Campo obrigatório" data-container="body"
+                                   ng-class="{'fa-check': formParent.username.$valid, 'fa-exclamation-circle': formParent.username.$invalid}"></i>
+                                <input required name="username" type="text" ng-model="Parent.UserName" class="form-control input-lg" placeholder="Usuário de acesso">
+                            </div>
+                        </div>
+                        <div class="col-md-4" ng-class="{'has-success': formParent.password.$valid, 'has-error': formParent.password.$invalid}">
+                            <label>Senha de acesso</label>
+                            <div class="input-icon right input-icon-lg">
+                                <i class="fa fa-exclamation-circle tooltips" data-original-title="Campo obrigatório" data-container="body"
+                                   ng-class="{'fa-check': formParent.password.$valid, 'fa-exclamation-circle': formParent.password.$invalid}"></i>
+                                <input required name="password" type="text" ng-model="Parent.Password" class="form-control input-lg" placeholder="Senha de acesso">
+                            </div>
+                        </div>
+                        <div class="col-md-4" ng-class="{'has-success': formParent.retype.$valid, 'has-error': formParent.retype.$invalid}">
+                            <label>Confirmação da senha</label>
+                            <div class="input-icon right input-icon-lg">
+                                <i class="fa fa-exclamation-circle tooltips" data-original-title="Campo obrigatório" data-container="body"
+                                   ng-class="{'fa-check': formParent.retype.$valid, 'fa-exclamation-circle': formParent.retype.$invalid}"></i>
+                                <input required name="retype" type="text" ng-model="rePassword" class="form-control input-lg" placeholder="Re-digite a senha de acesso">
+                            </div>
+                            <span ng-if="((formParent.password.$dirty && formParent.retype.$dirty) && rePassword != Parent.Password)"
+                                  class="label label-warning">
+                                As senhas não conferem
+                            </span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <!--TEL-->
+                        <div class="col-md-12">
+                            <label>Telefone(s) de contato</label>
+                            <div class="portlet">
+                                <div class="portlet-body">
+                                    <div class="table-scrollable">
+                                        <table class="table table-striped table-bordered table-advance table-hover">
+                                            <thead>
+                                                <tr>
+                                                    @*<th>
+                                                            <i class="fa fa-cogs"></i> Tipo
+                                                        </th>*@
+                                                    <th class="hidden-xs">
+                                                        <i class="fa fa-phone"></i> Telefone
+                                                    </th>
+                                                    <th>
+                                                        <div style="cursor:pointer" ng-click="addPhone()">
+                                                            <i class="fa fa-plus"></i> Adicionar
+                                                        </div>
+
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="phone in phones track by $index">
+                                                    <td>
+                                                        <div ng-class="{'has-success': formParent.phoneNumber.$valid, 'has-error': formParent.phoneNumber.$invalid}">
+                                                            <input maxlength="15" phone-mask required name="phoneNumber" ng-model="phone.Number"
+                                                                   type="text" class="form-control input-lg">
+                                                        </div>
+
+                                                    </td>
+                                                    <td>
+                                                        <div ng-if="$index != 0" style="cursor:pointer" ng-click="removePhone(phone.Number)">
+                                                            <a class="btn default btn-lg black">
+                                                                <i class="fa fa-trash-o"></i> Excluir
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--TEL FIM-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FOM User END-->
+
+        <!--FORM STUDENT BEGIN-->
+        <div ng-repeat="student in students track by $index">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption font-green">
+                        <i class="fa fa-mortar-board font-green"></i>
+                        <span class="caption-subject bold uppercase"> Cadastro do Estudante</span>
+                        <span class="caption-subject bold uppercase" ng-if="$index != 0">({{$index+1}})</span>
+                        <span class="caption-helper"></span>
+                    </div>
+                    <div class="actions" ng-if="$index != 0">
+                        <a class="btn btn-circle btn-icon-only red" ng-click="removeStudent($index)" title="Remover estudante ({{$index+1}})">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-12" ng-class="{'has-success': formParent.studentName.$valid,
+                                 'has-error': formParent.studentName.$invalid}">
+                                <label>Nome completo</label>
+                                <div class="input-icon right input-icon-lg">
+                                    <i class="fa fa-exclamation-circle tooltips" data-original-title="Campo obrigatório"
+                                       data-container="body" ng-class="{'fa-check': formParent.studentName.$valid,
+                                       'fa-exclamation-circle': formParent.studentName.$invalid}">
+                                    </i>
+                                    <input required name="studentName" type="text" ng-model="student.Name" class="form-control input-lg">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4" ng-class="{'has-success': formParent.studentBirthdate.$valid,
+                                 'has-error': formParent.studentBirthdate.$invalid}">
+                                <label class="control-label">Data de Nascimento</label>
+                                <div class="input-icon right input-icon-lg">
+                                    <i data-original-title="Campo obrigatório"
+                                       data-container="body" ng-class="{'fa-check': formParent.studentBirthdate.$valid,
+                                       'fa-exclamation-circle': formParent.studentBirthdate.$invalid}">
+                                    </i>                                    
+                                    <datetimepicker class="input-icon-lg"
+                                                    hour-step="hourStep"
+                                                    minute-step="minuteStep"
+                                                    ng-model="student.BirthDate"
+                                                    show-meridian="false"
+                                                    date-format="dd-MM-yyyy"
+                                                    hidden-time="true"
+                                                    hidden-date="false"
+                                                    name="datetimepicker"
+                                                    show-spinners="false"
+                                                    readonly-time="false"
+                                                    date-opened="dateOpened"
+                                                    show-button-bar="false"
+                                                    min-date="minDate"
+                                                    max-date="maxDate">
+                                        <!-- Use date-ng-click="open($event, opened)" to override date ng-click -->
+                                    </datetimepicker>
+                                </div>
+                            </div>
+                            <div class="col-md-4" ng-class="{'has-success': formParent.studentPeriod.$valid,
+                                 'has-error': formParent.studentPeriod.$invalid}">
+                                <label class="control-label">Período escolar</label>
+                                <div>
+                                    <select name="studentPeriod" class="form-control input-lg"
+                                            ng-model="student.Period.Id"
+                                            ng-options="period.Id as period.Name for period in periods"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FOM STUDENT END-->
+    </form>
+
+    <!--ACTIONS BUTTONS BEGIN-->
+    <div class="portlet-body">
+        <div class="form-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <button ng-click="addStudent()" type="button" class="btn default">Adicionar aluno</button>
+                </div>
+                <div class="col-md-2">
+                    <button @*ng-disabled="formParent.$invalid"*@ ng-click="save()" type="button" class="btn green">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--ACTIONS BUTTONS END-->
+
+    <!--MODAL LOADING BEGIN-->
+    <div class="modal fade" id="modal-loading" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="~/Content/themes/assets/global/img/loading-spinner-blue.gif" alt="" class="loading">
+                    <span>
+                        &nbsp;&nbsp;Processando...
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--MODAL LOADING END-->
+</div>

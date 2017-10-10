@@ -1,0 +1,297 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/cadastrados/cadastrados.js"></script>
+
+<div ng-controller="cadastradosCtrl" ng-init="init();">
+    <div ng-if="errors.length > 0" class="portlet light">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs font-red-sunglo"></i>
+                    <span class="caption-subject font-red-sunglo bold uppercase">Notificação de erros</span>
+                    <span class="caption-helper">O(s) seguinte(s) erro(s) ocorreu(ram)...</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div ng-repeat="error in errors" class="alert alert-danger">
+                    <strong>Erro!</strong> <span ng-bind="error"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BEGIN PAGE HEADER BREADCRUMB-->
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-user"></i>
+                <a href="Cadastro">Cadastro</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#">Cadastrados</a>
+            </li>
+        </ul>
+    </div>
+    <!-- END PAGE HEADER BREADCRUMB-->
+    <!--SEARCH REGRISTRED user-->
+    <div ng-if="showDetails == false" class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa icon-user-follow font-green-sharp"></i>
+                <span class="caption-subject font-green-sharp bold uppercase">Buscar cadastrados</span>
+                <span class="caption-helper">realiza uma busca pelo filtros preenchidos</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <form role="form">
+                <div class="form-body">
+                    <div class="row">
+                        <!--Filtros-->
+                        <div class="col-md-12">
+                            <label>Nome</label>
+                            <div class="input-icon right input-icon-lg">
+                                <input type="text" ng-model="baseParent.Name" class="form-control input-lg" placeholder="Nome do responsável ou nome do estudante">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <!--Filtros-->
+                        <div class="col-md-4">
+                            <label>E-mail</label>
+                            <div class="input-icon right input-icon-lg">
+                                <input data-ng-model="baseParent.Email" type="text" class="form-control input-lg" placeholder="E-mail do responsável">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Status</label>
+                            <div>
+                                <select class="form-control input-lg" ng-model="baseParent.Status" ng-options="s as s.Description for s in baseStatus"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button ng-click="search()" type="button" class="btn green">Pesquisar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div ng-if="showDetails == false" class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa icon-user-follow font-green-sharp"></i>
+                <span class="caption-subject font-green-sharp bold uppercase">Resultados</span>
+                <span class="caption-helper">visualize os dados abaixo</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <form role="form">
+                <div class="form-body">
+                    <div class="table-scrollable">
+                        <table class="table table-striped table-bordered table-advance table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <i class="fa fa-briefcase"></i> Responsável
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-shopping-cart"></i> Usuário acesso
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-shopping-cart"></i> Data cadastro
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-shopping-cart"></i> Detalhes
+                                    </th>                                  
+                                    <th>
+                                        <i class="fa fa-shopping-cart"></i> Atualizar
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-shopping-cart"></i> Status
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="parent in parentList">
+                                    <td class="highlight">
+                                        <div class="success">
+                                        </div>
+                                        <a href="#">
+                                            {{parent.Name}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {{parent.UserName}}
+                                    </td>
+                                    <td>
+                                        {{parent.CreatedAt | convertToDate | date:'dd-MM-yyyy HH:mm'}}
+                                    </td>                                    
+                                    <td>
+                                        {{parent.Status.Description}}
+                                    </td>
+                                    <td>
+                                        <a ng-click="details(parent);">Visualizar</a>
+                                    </td>
+                                    <td>
+                                        <select class="form-control input-sm"
+                                                ng-model="parent.Status" ng-options="s as s.Description for s in statusList"></select>
+                                    </td>
+                                    <td>
+                                        <a ng-click="save(parent)" class="btn default btn-xs green">
+                                            <i class="fa fa-save"></i> Salvar
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--USER DETAILS BEGIN-->
+    <div ng-if="showDetails == true">
+        <form>
+            <!-- FORM User BEGIN -->
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption font-green">
+                        <i class="fa fa-user font-green"></i>
+                        <span class="caption-subject bold uppercase">Detalhes do Usuário</span>
+                        <span class="caption-helper"></span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-body">
+                        <div class="row">
+                            <!--Filtros-->
+                            <div class="col-md-12">
+                                <label>Nome completo</label>
+                                <div class="input-icon right input-icon-lg">
+                                    <input required name="name" type="text" ng-model="parent.Name" class="form-control input-lg">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>E-mail de contato</label>
+                                <div class="input-icon right input-icon-lg">
+                                    <input required name="email" type="text" ng-model="parent.Email" class="form-control input-lg">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Usuário de acesso</label>
+                                <div class="input-icon right input-icon-lg">
+                                    <input required name="username" type="text" ng-model="parent.UserName" class="form-control input-lg">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Status atual</label>
+                                <div class="input-icon right input-icon-lg">
+                                    <input type="text" ng-model="parent.Status.Description" class="form-control input-lg">
+                                </div>
+                            </div>
+                        </div>                                                    
+                        
+                        <br />
+                        <div class="row">
+                            <!--TEL-->
+                            <div class="col-md-12">
+                                <label>Telefone(s) de contato</label>
+                                <div class="portlet">
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable">
+                                            <table class="table table-striped table-bordered table-advance table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="hidden-xs">
+                                                            <i class="fa fa-phone"></i> Telefone
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="phone in parent.Phone track by $index">
+                                                        <td>
+                                                            <div>
+                                                                <input ng-model="phone.Number" type="text" class="form-control input-medium">
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--TEL FIM-->
+                        </div>
+                    </div>
+                </div>              
+            </div>
+            <!--FOM User END-->
+            <!--FORM STUDENT BEGIN-->
+            <div ng-repeat="student in parent.Students track by $index">
+                <div class="portlet light">
+                    <div class="portlet-title">
+                        <div class="caption font-green">
+                            <i class="fa fa-mortar-board font-green"></i>
+                            <span class="caption-subject bold uppercase"> Cadastro do Estudante</span>
+                            <span class="caption-subject bold uppercase" ng-if="$index != 0">({{$index+1}})</span>
+                            <span class="caption-helper"></span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Nome completo</label>
+                                    <div class="input-icon right input-icon-lg">
+                                        <input required name="studentName" type="text" ng-model="student.Name" class="form-control input-lg">
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="control-label">Data de Nascimento</label>
+                                    <div class="input-icon right input-icon-lg">
+                                        <input required type="text" ng-model="student.BirthDate" class="form-control input-lg">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="control-label">Período escolar</label>
+                                    <div>
+                                        <input required type="text" ng-model="student.Period.Name" class="form-control input-lg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--FOM STUDENT END-->
+            <div class="row">
+                <div class="col-md-2">
+                    <button ng-click="details();" type="button" class="btn grey-cascade">Fechar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
