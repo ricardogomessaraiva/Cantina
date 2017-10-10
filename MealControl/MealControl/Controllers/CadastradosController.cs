@@ -58,7 +58,7 @@ namespace MealControl.Controllers
             //Entity.Entry(parent).State = System.Data.Entity.EntityState.Modified;
             //entity.SaveChanges();
             
-            var errors = service.Validate(parent);
+            //errors = service.Validate(parent);
 
             return Json(new
             {
