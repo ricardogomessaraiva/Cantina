@@ -54,6 +54,7 @@ namespace MealControl.Controllers
             var errors = entity.GetValidationErrors().ToList();
             entity.SaveChanges();
 
+            //Update
             //Entity.Parent.Attach(parent);
             //Entity.Entry(parent).State = System.Data.Entity.EntityState.Modified;
             //entity.SaveChanges();
