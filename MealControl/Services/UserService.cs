@@ -7,15 +7,25 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Data.Entity.Migrations;
+using System.Data.Entity;
 
 namespace Services
 {
     public class UserService
     {
+        const int STATUS_EVERYONE = 0;//Do not existe at database, just to ignore as a status in a filter
+        const int STATUS_ACTIVE = 1;
+        const int STATUS_INACTIVE = 2;
+        const int STATUS_WAITING_EVALUATION = 3;
+        const int STATUS_BLOCKED = 4;
+
         readonly MealEntities Entity = new MealEntities();
 
         public ICollection<DbValidationError> Validate(Parent parent)
         {
+            if (parent.Students.Count == 0)
+                parent.Students = null;
+
             Entity.Parent.Add(parent);
             var errors = new List<DbValidationError>();
 
@@ -29,20 +39,23 @@ namespace Services
                     errors.Add(new DbValidationError("Email", "Digite um e-mail válido."));
             }
 
-            if (parent.Status.Id == 3 && Entity.Parent.Any(s => s.Email == parent.Email))
+            if (parent.Status.Id == STATUS_WAITING_EVALUATION && Entity.Parent.Any(s => s.Email == parent.Email))
                 errors.Add(new DbValidationError("Email", "Já existe um usuário cadastrado com este email."));
 
-            parent.Students.ForEach(s =>
+            if (parent.Students != null)
             {
-                if (s.BirthDate == DateTime.MinValue || s.BirthDate.Date >= DateTime.Now.Date)
-                    errors.Add(new DbValidationError("Birthdate", "Data nascimento inválida."));
+                parent.Students.ForEach(s =>
+                {
+                    if (s.BirthDate == DateTime.MinValue || s.BirthDate.Date >= DateTime.Now.Date)
+                        errors.Add(new DbValidationError("Birthdate", "Data nascimento inválida."));
 
-                if (string.IsNullOrEmpty(s.Name))
-                    errors.Add(new DbValidationError("Student Name ", "Nome do estudante é obrigatório."));
+                    if (string.IsNullOrEmpty(s.Name))
+                        errors.Add(new DbValidationError("Student Name ", "Nome do estudante é obrigatório."));
 
-                if (s.Period == null)
-                    errors.Add(new DbValidationError("Period", "Periodo é obrigatório."));
-            });
+                    if (s.Period == null)
+                        errors.Add(new DbValidationError("Period", "Periodo é obrigatório."));
+                });
+            }
 
             return errors;
         }
@@ -56,31 +69,21 @@ namespace Services
 
         public Parent Update(Parent parent)
         {
-            var model = Entity.Parent.Find(parent.Id);
-            var _parent = new Parent
-            {
-                Id = parent.Id,
-                CreatedAt = parent.CreatedAt,
-                Name = parent.Name,
-                UserName = parent.UserName,
-                Password = parent.Password,
-                Email = parent.Email,
-                Phone = parent.Phone,
-                Status = Entity.Status.Find(parent.Status.Id),
-                Students = parent.Students
-            };
+            Parent _parent = Entity.Parent.SingleOrDefault(s => s.Id == parent.Id);
+            Entity.Phone.RemoveRange(_parent.Phone);
+            Entity.Students.RemoveRange(_parent.Students);
+            Entity.Parent.Remove(_parent);
 
-            //Entity.Parent.AddOrUpdate(_parent);
-            //Entity.SaveChanges();
+            parent.Students.ForEach(student => 
+            { 
+                student.Period = Entity.Period.Single(x => x.Id == student.Period.Id); 
+            });
 
-            //Entity.Parent.Add(_parent);
-            //Entity.Entry(_parent).State = System.Data.Entity.EntityState.Modified;
-            //Entity.SaveChanges();            
+            parent.Status = Entity.Status.Single(x => x.Id == parent.Status.Id);
+            parent.ModifiedAt = DateTime.Now;
+            Entity.Parent.Add(parent);            
 
-            //Entity.Entry(model).CurrentValues.SetValues(_parent);
-            //Entity.SaveChanges();
-            
-            return _parent;
+            return Entity.SaveChanges() > 0 ? parent : null;
         }
 
         public Parent GetUser(Parent parent)
@@ -107,7 +110,7 @@ namespace Services
                             .ToList();
             }
 
-            if (parent.Status.Description.ToLower() == "todos")
+            if (parent.Status.Id == STATUS_INACTIVE)
             {
                 return Entity.Parent
                   .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&

@@ -8,9 +8,11 @@ namespace Models
 
         public DateTime CreatedAt { get; set; }
 
+        public DateTime ModifiedAt { get; set; }
+
         public BaseEntity()
         {
-            CreatedAt = DateTime.Now;
+            CreatedAt = DateTime.Now;            
         }
 
     }

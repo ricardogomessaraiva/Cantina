@@ -8,3 +8,8 @@ D:\PROJETOS PF\Cantina\MealControl\Models\bin\Debug\Models.pdb
 D:\PROJETOS PF\Cantina\MealControl\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
 D:\PROJETOS PF\Cantina\MealControl\Models\obj\Debug\Models.dll
 D:\PROJETOS PF\Cantina\MealControl\Models\obj\Debug\Models.pdb
+D:\PROJETOS PF\git\Cantina\MealControl\Models\bin\Debug\Models.dll
+D:\PROJETOS PF\git\Cantina\MealControl\Models\bin\Debug\Models.pdb
+D:\PROJETOS PF\git\Cantina\MealControl\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\PROJETOS PF\git\Cantina\MealControl\Models\obj\Debug\Models.dll
+D:\PROJETOS PF\git\Cantina\MealControl\Models\obj\Debug\Models.pdb

@@ -3,7 +3,7 @@ namespace Contexts.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class create_first_user : DbMigration
+    public partial class Firstuserasadeveloper : DbMigration
     {
         public override void Up()
         {

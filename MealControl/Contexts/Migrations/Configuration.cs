@@ -41,7 +41,7 @@ namespace Contexts.Migrations
             * * CREATE FIRST USER AS AN DEVELOPER
             */
 
-            //var hashedPass = BCrypt.Net.BCrypt.HashPassword("");
+            //var hashedPass = BCrypt.Net.BCrypt.HashPassword("ricardo");
             //context.User.Add(new User
             //{
             //    Name = "Ricardo Gomes Sariava",
@@ -49,7 +49,7 @@ namespace Contexts.Migrations
             //    Password = hashedPass,
             //    Email = "ricardogomessaraiva@hotmail.com",
             //    Type = context.Type.First(x => x.Id == 1),
-            //    Status = context.Status.First(x => x.Id == 1)                
+            //    Status = context.Status.First(x => x.Id == 1)
             //});
         }
     }

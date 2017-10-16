@@ -24,8 +24,18 @@
             .then(function success(response) {
                 $scope.parentList = response.data.parentList;
                 $scope.parentList.forEach(function (parent, pos) {
-                    parent.Students.forEach(function (student) {                        
-                        student.BirthDate = moment(student.BirthDate).format('L');
+                    parent.CreatedAt = moment(parent.CreatedAt).format('LL');
+                    parent.Status.CreatedAt = moment(parent.Status.CreatedAt).format('LL');
+
+                    parent.Phone.forEach(function (phone, pos) {
+                        phone.CreatedAt = moment(phone.CreatedAt).format('LL');
+                    });
+
+                    moment.locale();
+                    parent.Students.forEach(function (student) {
+                        student.CreatedAt = moment(student.CreatedAt).format('LL');
+                        student.BirthDate = moment(student.BirthDate).format('LL');
+                        student.Period.CreatedAt = moment(student.Period.CreatedAt).format('LL');
                     });
                 });
             }, function error(response) {

@@ -48,6 +48,7 @@ namespace MealControl.Controllers
         [HttpPost]
         public ActionResult Update(Parent parent)
         {
+            //parent.Students.ForEach(s => { s.BirthDate = DateTime.Now.AddYears(-2); });
             var _parent = new Parent();
             var errors = service.Validate(parent);
             if (errors.Count == 0)

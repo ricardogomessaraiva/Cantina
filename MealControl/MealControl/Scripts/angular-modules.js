@@ -1,10 +1,10 @@
 ﻿var app = angular.module("cantinaApp", ['ui.bootstrap', 'ui.bootstrap.datetimepicker'])
 
-.filter("convertToDate", function() {
+.filter("convertToDate", function () {
     var re = /\/Date\(([0-9]*)\)\//;
-    return function(x) {
+    return function (x) {
         var m = x.match(re);
-        if( m ) return new Date(parseInt(m[1]));
+        if (m) return new Date(parseInt(m[1]));
         else return null;
     };
 })

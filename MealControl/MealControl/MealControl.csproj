@@ -145,6 +145,7 @@
     <Content Include="Scripts\cadastro\cadastroApp.js" />
     <Content Include="Scripts\directives\masks.directives.js" />
     <Content Include="Scripts\dirPagination.js" />
+    <Content Include="Scripts\factories\factory.js" />
     <Content Include="Scripts\home\homeCtrl.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\login\loginApp.js" />

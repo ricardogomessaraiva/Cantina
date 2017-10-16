@@ -50,8 +50,7 @@ D:\PROJETOS PF\Cantina\MealControl\Services\bin\Debug\EntityFramework.SqlServer.
 D:\PROJETOS PF\Cantina\MealControl\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
 D:\PROJETOS PF\Cantina\MealControl\Services\obj\Debug\Services.dll
 D:\PROJETOS PF\Cantina\MealControl\Services\obj\Debug\Services.pdb
-D:\PROJETOS PF\git\Cantina\MealControl\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
-D:\PROJETOS PF\git\Cantina\MealControl\Services\obj\Debug\Services.dll
+D:\PROJETOS PF\git\Cantina\MealControl\Services\bin\Debug\EntityFramework.xml
 D:\PROJETOS PF\git\Cantina\MealControl\Services\bin\Debug\Services.dll.config
 D:\PROJETOS PF\git\Cantina\MealControl\Services\bin\Debug\Services.dll
 D:\PROJETOS PF\git\Cantina\MealControl\Services\bin\Debug\Services.pdb
@@ -64,6 +63,7 @@ D:\PROJETOS PF\git\Cantina\MealControl\Services\bin\Debug\MySql.Data.Entity.EF6.
 D:\PROJETOS PF\git\Cantina\MealControl\Services\bin\Debug\Contexts.pdb
 D:\PROJETOS PF\git\Cantina\MealControl\Services\bin\Debug\Models.pdb
 D:\PROJETOS PF\git\Cantina\MealControl\Services\bin\Debug\BCrypt.Net.xml
-D:\PROJETOS PF\git\Cantina\MealControl\Services\bin\Debug\EntityFramework.xml
 D:\PROJETOS PF\git\Cantina\MealControl\Services\bin\Debug\EntityFramework.SqlServer.xml
+D:\PROJETOS PF\git\Cantina\MealControl\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
+D:\PROJETOS PF\git\Cantina\MealControl\Services\obj\Debug\Services.dll
 D:\PROJETOS PF\git\Cantina\MealControl\Services\obj\Debug\Services.pdb

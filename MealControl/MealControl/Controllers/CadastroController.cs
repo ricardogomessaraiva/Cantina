@@ -12,6 +12,8 @@ namespace MealControl.Controllers
 {
     public class CadastroController : BaseController
     {
+        const int STATUS_WAITING_EVALUATION = 3;
+
         public UserService service = new UserService();
 
         public ActionResult Index()
@@ -34,13 +36,9 @@ namespace MealControl.Controllers
             {
                 if (parent.Status == null)
                 {
-                    //New User Status id 3 = Waiting evaluation
-                    parent.Status = entity.Status.FirstOrDefault(s => s.Id == 3);
+                    parent.Status = entity.Status.FirstOrDefault(s => s.Id == STATUS_WAITING_EVALUATION);
                 }
-
-                ////user type 3 = user            
-                //user.Type = entity.Type.FirstOrDefault(s => s.Id == 3);
-
+              
                 //Set user period by period description
                 parent.Students.ForEach(s =>
                 {
@@ -55,15 +53,7 @@ namespace MealControl.Controllers
                 if (parent.Id != 0)
                     parent.Password = entity.Parent.First(s => s.Id == parent.Id).Password;
                 else
-                    parent.Password = BCrypt.Net.BCrypt.HashPassword(parent.Password);
-
-                //if (parent.Status.Id == 1)
-                //{
-                //    entity.Parent.Attach(parent);
-                //    entity.Entry(parent).State = System.Data.Entity.EntityState.Modified;
-                //    entity.SaveChanges();
-                //    return new HttpStatusCodeResult(HttpStatusCode.Accepted);//202            
-                //}
+                    parent.Password = BCrypt.Net.BCrypt.HashPassword(parent.Password);                
 
                 parent = service.Insert(parent);                
 

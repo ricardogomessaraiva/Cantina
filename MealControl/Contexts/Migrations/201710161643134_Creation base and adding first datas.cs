@@ -3,7 +3,7 @@ namespace Contexts.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class create_base : DbMigration
+    public partial class Creationbaseandaddingfirstdatas : DbMigration
     {
         public override void Up()
         {
@@ -17,6 +17,7 @@ namespace Contexts.Migrations
                         Email = c.String(nullable: false, unicode: false),
                         Name = c.String(nullable: false, maxLength: 50, storeType: "nvarchar"),
                         CreatedAt = c.DateTime(nullable: false, precision: 0),
+                        ModifiedAt = c.DateTime(nullable: false, precision: 0),
                         Status_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -28,8 +29,9 @@ namespace Contexts.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Number = c.Long(nullable: false),
+                        Number = c.String(nullable: false, unicode: false),
                         CreatedAt = c.DateTime(nullable: false, precision: 0),
+                        ModifiedAt = c.DateTime(nullable: false, precision: 0),
                         Parent_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -43,6 +45,7 @@ namespace Contexts.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Description = c.String(nullable: false, maxLength: 20, storeType: "nvarchar"),
                         CreatedAt = c.DateTime(nullable: false, precision: 0),
+                        ModifiedAt = c.DateTime(nullable: false, precision: 0),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -54,6 +57,7 @@ namespace Contexts.Migrations
                         BirthDate = c.DateTime(nullable: false, precision: 0),
                         Name = c.String(nullable: false, maxLength: 50, storeType: "nvarchar"),
                         CreatedAt = c.DateTime(nullable: false, precision: 0),
+                        ModifiedAt = c.DateTime(nullable: false, precision: 0),
                         Period_Id = c.Int(nullable: false),
                         Parent_Id = c.Int(),
                     })
@@ -70,6 +74,7 @@ namespace Contexts.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 50, storeType: "nvarchar"),
                         CreatedAt = c.DateTime(nullable: false, precision: 0),
+                        ModifiedAt = c.DateTime(nullable: false, precision: 0),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -80,6 +85,7 @@ namespace Contexts.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 50, storeType: "nvarchar"),
                         CreatedAt = c.DateTime(nullable: false, precision: 0),
+                        ModifiedAt = c.DateTime(nullable: false, precision: 0),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -93,6 +99,7 @@ namespace Contexts.Migrations
                         Password = c.String(nullable: false, unicode: false),
                         Email = c.String(nullable: false, unicode: false),
                         CreatedAt = c.DateTime(nullable: false, precision: 0),
+                        ModifiedAt = c.DateTime(nullable: false, precision: 0),
                         Status_Id = c.Int(nullable: false),
                         Type_Id = c.Int(nullable: false),
                     })
