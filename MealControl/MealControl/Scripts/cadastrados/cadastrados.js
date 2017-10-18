@@ -26,7 +26,6 @@
                 $scope.parentList.forEach(function (parent, pos) {
                     parent.CreatedAt = moment(parent.CreatedAt).format('LL');
                     parent.Status.CreatedAt = moment(parent.Status.CreatedAt).format('LL');
-
                     parent.Phone.forEach(function (phone, pos) {
                         phone.CreatedAt = moment(phone.CreatedAt).format('LL');
                     });
@@ -43,13 +42,27 @@
             });
     }
 
-    $scope.update = function (parent) {        
+    $scope.update = function (parent, pos) {
         $http.post('Cadastrados/Update', { parent: parent })
             .then(function success(response) {
+                if (response.data.errors.length > 0) {
+                    response.data.errors.forEach(function (error, pos) {
+                        $scope.errors.push(error.ErrorMessage);
+                    });
+                    return;
+                }
 
-        }), function error(response) {
-            $scope.errors.push(response.statusText);
-        }
+                var _parent = response.data.parent;
+                _parent.Phone.forEach(function (phone, pos) {
+                    phone.CreatedAt = moment(phone.CreatedAt).format('LL');
+                });
+                _parent.CreatedAt = moment(_parent.CreatedAt).format('LL');
+                _parent.ModifiedAt = moment(_parent.ModifiedAt).format('LL');
+                $scope.parentList[pos] = _parent;
+                $scope.statusList = angular.copy($scope.statusList);
+            }), function error(response) {
+                $scope.errors.push(response.statusText);
+            }
     };
 
     $scope.details = function (parent) {

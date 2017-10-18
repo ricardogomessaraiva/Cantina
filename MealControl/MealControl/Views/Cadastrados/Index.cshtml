@@ -3,24 +3,12 @@
 }
 
 <script src="~/Scripts/cadastrados/cadastrados.js"></script>
+<script src="~/Scripts/directives/ui-alert-errors.js"></script>
 
 <div ng-controller="cadastradosCtrl" ng-init="init();">
-    <div ng-if="errors.length > 0" class="portlet light">
-        <div class="portlet light">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="fa fa-cogs font-red-sunglo"></i>
-                    <span class="caption-subject font-red-sunglo bold uppercase">Notificação de erros</span>
-                    <span class="caption-helper">O(s) seguinte(s) erro(s) ocorreu(ram)...</span>
-                </div>
-            </div>
-            <div class="portlet-body">
-                <div ng-repeat="error in errors" class="alert alert-danger">
-                    <strong>Erro!</strong> <span ng-bind="error"></span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--DIRECTIVE TO SHOW ERRORS-->
+    <ui-alert> </ui-alert>
+    <!--------------------------->
 
     <!-- BEGIN PAGE HEADER BREADCRUMB-->
     <div class="page-bar">
@@ -122,7 +110,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="parent in parentList">
+                                <tr ng-repeat="parent in parentList track by $index">
                                     <td class="highlight">
                                         <div class="success">
                                         </div>
@@ -147,7 +135,7 @@
                                                 ng-model="parent.Status" ng-options="s as s.Description for s in statusList"></select>
                                     </td>
                                     <td>
-                                        <a ng-click="update(parent)" class="btn default btn-xs green">
+                                        <a ng-click="update(parent, $index)" class="btn default btn-xs green">
                                             <i class="fa fa-save"></i> Salvar
                                         </a>
                                     </td>

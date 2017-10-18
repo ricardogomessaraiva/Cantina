@@ -32,7 +32,7 @@ namespace Services
             if (Entity.GetValidationErrors().Count() > 0)
                 errors.AddRange(Entity.GetValidationErrors().First().ValidationErrors);
 
-            if (parent.Email != null)
+            if (parent.Email != null && parent.Status.Id == STATUS_WAITING_EVALUATION)
             {
                 var isValid = Regex.IsMatch(parent.Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
                 if (!isValid)
@@ -74,14 +74,14 @@ namespace Services
             Entity.Students.RemoveRange(_parent.Students);
             Entity.Parent.Remove(_parent);
 
-            parent.Students.ForEach(student => 
-            { 
-                student.Period = Entity.Period.Single(x => x.Id == student.Period.Id); 
+            parent.Students.ForEach(student =>
+            {
+                student.Period = Entity.Period.Find(student.Period.Id);
             });
 
-            parent.Status = Entity.Status.Single(x => x.Id == parent.Status.Id);
+            parent.Status = Entity.Status.Find(parent.Status.Id);
             parent.ModifiedAt = DateTime.Now;
-            Entity.Parent.Add(parent);            
+            Entity.Parent.Add(parent);
 
             return Entity.SaveChanges() > 0 ? parent : null;
         }
@@ -124,7 +124,7 @@ namespace Services
                     .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&
                                 x.UserName.Contains((parent.UserName != null ? parent.UserName : x.UserName)) &&
                                 x.Email.Contains((parent.Email != null ? parent.Email : x.Email)) &&
-                                x.Status.Description == (parent.Status.Description != null ? parent.Status.Description : x.Status.Description))
+                                x.Status.Description == parent.Status.Description)
                     .OrderBy(x => x.CreatedAt)
                     .ToList();
         }

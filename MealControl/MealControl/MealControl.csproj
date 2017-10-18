@@ -142,10 +142,12 @@
     <Content Include="Scripts\angular.min-1.4.6.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\cadastrados\cadastrados.js" />
-    <Content Include="Scripts\cadastro\cadastroApp.js" />
+    <Content Include="Scripts\cadastro\cadastro.js" />
     <Content Include="Scripts\directives\masks.directives.js" />
+    <Content Include="Scripts\directives\ui-alert-errors.js" />
+    <Content Include="Scripts\directives\view\alert.html" />
     <Content Include="Scripts\dirPagination.js" />
-    <Content Include="Scripts\factories\factory.js" />
+    <Content Include="Scripts\factories\factory-cadastro.js" />
     <Content Include="Scripts\home\homeCtrl.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\login\loginApp.js" />
