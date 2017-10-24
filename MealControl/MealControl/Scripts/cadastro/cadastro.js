@@ -1,7 +1,7 @@
 ﻿app.controller('cadastroCtrl', function ($scope, $http, factory) {
     angular.element('#cadastro-usuario').addClass("start active open");
     $scope.phones = [{ Number: null }];
-    $scope.students = [{ Name: null, BirthDate: null, Period: null }];
+    $scope.students = factory.createStudent;
     $scope.Parent = factory.createParent;
     $scope.retypeEmail = null;
 
@@ -13,7 +13,7 @@
     }
 
     $scope.save = function () {
-        $scope.errors = [];        
+        $scope.errors = [];
         $scope.Parent.Phone = angular.copy($scope.phones)
         $scope.Parent.Students = angular.copy($scope.students);
 
@@ -27,47 +27,40 @@
                 $scope.Parent.Students.splice(i, 1);
             else if (!student.BirthDate)
                 $scope.Parent.Students.splice(i, 1);
-            else if(!student.Period)
+            else if (!student.Period)
                 $scope.Parent.Students.splice(i, 1);
         });
 
-        return;
         $http.post('Cadastro/Save', { parent: $scope.Parent }).then(success, error);
         function success(response) {
             if (response.status == 201)//CREATED
                 return window.location.href = 'Confirmacao';
-            if (response.status == 202)
-                alert('Atualizado com sucesso');
 
             for (var i in response.data) {
                 $scope.errors.push(response.data[i].ErrorMessage);
-        }
-    };
+            }
+        };
         function error(response) {
             $scope.errors = new Array(response.statusText);
+        };
     };
-
-};
 
     $scope.addPhone = function () {
         $scope.phones.push({ Number: '' });
-}
+    }
 
     $scope.removePhone = function (phone) {
         var pos = $scope.phones.indexOf(phone);
         $scope.phones.splice(pos, 1);
-}
+    }
 
     $scope.addStudent = function () {
-        $scope.students.push({
-                Name: '',
-                BirthDate: '',
-                Period: ''
-        });
-}
+        var student = factory.createStudent;
+        $scope.students.push(student);
+    }
 
     $scope.removeStudent = function (i) {
         $scope.students.splice(i, 1);
-}
+    }
 
 });

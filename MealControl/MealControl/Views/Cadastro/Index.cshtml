@@ -4,6 +4,7 @@
 
 <script src="~/Scripts/directives/masks.directives.js"></script>
 <script src="~/Scripts/factories/factory-cadastro.js"></script>
+<script src="~/Scripts/directives/ui-alert-errors.js"></script>
 <script src="~/Scripts/cadastro/cadastro.js"></script>
 
 <div ng-controller="cadastroCtrl">
@@ -21,25 +22,13 @@
         </ul>
     </div>
     <!-- END PAGE HEADER BREADCRUMB-->
-    <div ng-if="errors.length > 0" class="portlet light">
-        <div class="portlet light">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="fa fa-cogs font-red-sunglo"></i>
-                    <span class="caption-subject font-red-sunglo bold uppercase">Notificação de erros</span>
-                    <span class="caption-helper">falha ao salvar o cadastro...</span>
-                </div>
-            </div>
-            <div class="portlet-body">
-                <div ng-repeat="error in errors" class="alert alert-danger">
-                    <strong>Erro!</strong> <span ng-bind="error"></span>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    <!--DIRECTIVE TO SHOW ERRORS-->
+    <ui-alert> </ui-alert>
+    <!--------------------------->
     
 
-    <form ng-init="load();" name="formUser" role="form" novalidate>                
+    <form ng-init="load();" name="formParent" role="form" novalidate>
         <!-- FORM User BEGIN -->
         <div class="portlet light">
             <div class="portlet-title">
@@ -178,7 +167,6 @@
             </div>
         </div>
         <!--FOM User END-->
-
         <!--FORM STUDENT BEGIN-->
         <div ng-repeat="student in students track by $index">
             <div class="portlet light">
@@ -219,7 +207,7 @@
                                     <i data-original-title="Campo obrigatório"
                                        data-container="body" ng-class="{'fa-check': formParent.studentBirthdate.$valid,
                                        'fa-exclamation-circle': formParent.studentBirthdate.$invalid}">
-                                    </i>                                    
+                                    </i>
                                     <datetimepicker class="input-icon-lg"
                                                     hour-step="hourStep"
                                                     minute-step="minuteStep"

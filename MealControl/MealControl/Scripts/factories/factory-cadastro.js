@@ -12,7 +12,14 @@
         Status: null
     };
 
+    var _student = {
+        Name: null,
+        BirthDate: null,
+        Period: null
+    }
+
     return {
-        createParent: _parent
+        createParent: _parent,
+        createStudent: _student
     };
 })
