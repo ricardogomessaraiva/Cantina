@@ -13,3 +13,4 @@
 - Arquitetura MVC - Model, View, Controller.
 - Entity framework 6 - Migrations com MySql Server, validações em backend utilizando Entity validations errors.
 - AngularJs - Form validations, directivas, factories, services, filters e injeção de dependências.
+- Unit tests - Testes unitário.
