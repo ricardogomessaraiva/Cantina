@@ -5,14 +5,14 @@
     <div class="page-sidebar navbar-collapse collapse">
         <!-- BEGIN SIDEBAR MENU -->
         <ul class="page-sidebar-menu page-sidebar-menu-hover-submenu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-            <li ng-if="User.Type == null" id="home">
+            <li ng-show="User.Type == null" id="home">
                 <a href="Login">
                     <i class="icon-home"></i>
                     <span class="title">Página Login</span>
                     <span class="selected"></span>
                 </a>
             </li>
-            <li ng-if="User.Type != null && User.Type.Id != 3" id="home">
+            <li ng-show="User.Type != null && User.Type.Id != 3" id="home">
                 <a href="Home">
                     <i class="icon-home"></i>
                     <span class="title">Página inicial</span>
@@ -22,7 +22,7 @@
             <li id="cadastro-usuario">
                 <a href="Cadastro">
                     <i class="icon-user"></i>
-                    <span class="title">Cadastro</span>
+                    <span class="title">Usuário</span>
                     <span class="selected"></span>
                 </a> 
                 <ul ng-if="User.Type != null && User.Type.Id != 3" class="sub-menu">
@@ -35,10 +35,11 @@
                     </li>
                 </ul>                            
             </li>
-            <li ng-if="User.Type != null && User.Type.Id != 3">
-                <a href="#">
+            <li ng-show="User.Type != null && User.Type.Id != 3" id="cadastro-produto">
+                <a href="Produtos">
                     <i class="icon-basket"></i>
                     <span class="title">Produtos</span>
+                    <span class="selected"></span>
                 </a>
             </li>
             <li ng-if="User.Type != null && User.Type.Id != 3">

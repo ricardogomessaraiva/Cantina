@@ -12,7 +12,7 @@ namespace MealControl.Controllers
 {
     public class CadastroController : BaseController
     {
-        const int STATUS_WAITING_EVALUATION = 3;
+        const int STATUS_WAITING_EVALUATION = 3;        
 
         public UserService service = new UserService();
 
@@ -32,20 +32,11 @@ namespace MealControl.Controllers
 
         public ActionResult Save(Parent parent)
         {
+            entity = new Contexts.MealEntities();
+
             try
             {
-                if (parent.Status == null)
-                {
-                    parent.Status = entity.Status.FirstOrDefault(s => s.Id == STATUS_WAITING_EVALUATION);
-                }
-              
-                //Set user period by period description
-                parent.Students.ForEach(s =>
-                {
-                    if (s.Period != null)
-                        s.Period = entity.Period.First(p => p.Id == s.Period.Id);
-                });
-
+                parent.Status = entity.Status.FirstOrDefault(s => s.Id == STATUS_WAITING_EVALUATION);
                 var errors = service.Validate(parent);
                 if (errors.Count() > 0)
                     return Json(errors);
@@ -59,7 +50,7 @@ namespace MealControl.Controllers
 
                 //Send email to all admins advising about the new user waiting for their evaluation
                 var subject = "Novo usuário cadastrado - Aguardando liberação";
-                var message = System.IO.File.ReadAllText(Server.MapPath("~/Mail.html")).Replace("##NAME##", parent.Name);
+                var message = System.IO.File.ReadAllText(Server.MapPath("~/ViewsEmails/WaitingEvaluation.html")).Replace("##NAME##", parent.Name);
                 var admins = entity.User.Where(s => s.Type.Id == 2).ToList();
 
                 admins.ForEach(s =>
@@ -72,7 +63,7 @@ namespace MealControl.Controllers
                     }
                     catch (Exception ex)
                     {
-                        //One fail occurred when send the email to the user admin in a row.                        
+                                               
                     }
 
                 });

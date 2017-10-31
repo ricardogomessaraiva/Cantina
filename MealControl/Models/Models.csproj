@@ -42,9 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="Category.cs" />
     <Compile Include="NamedBaseEntity.cs" />
     <Compile Include="Period.cs" />
     <Compile Include="Phone.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserType.cs" />
     <Compile Include="Status.cs" />

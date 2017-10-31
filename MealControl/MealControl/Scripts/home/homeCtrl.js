@@ -1,3 +1,3 @@
 ﻿app.controller('homeCtrl', function ($scope, $http) {    
-    angular.element('#home').addClass("start active open");
+    angular.element('#product').addClass("start active open");
 });

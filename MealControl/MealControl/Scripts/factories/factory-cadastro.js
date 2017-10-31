@@ -10,16 +10,9 @@
         Phone: { Id: 0, Number: null },
         Students: null,
         Status: null
-    };
-
-    var _student = {
-        Name: null,
-        BirthDate: null,
-        Period: null
-    }
+    };  
 
     return {
-        createParent: _parent,
-        createStudent: _student
+        createParent: _parent      
     };
 })

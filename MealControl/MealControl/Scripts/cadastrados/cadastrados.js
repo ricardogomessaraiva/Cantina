@@ -56,6 +56,10 @@
                 _parent.Phone.forEach(function (phone, pos) {
                     phone.CreatedAt = moment(phone.CreatedAt).format('LL');
                 });
+                _parent.Students.forEach(function (student, pos) {
+                    student.BirthDate = moment(student.BirthDate).format('LL');
+                });
+
                 _parent.CreatedAt = moment(_parent.CreatedAt).format('LL');
                 _parent.ModifiedAt = moment(_parent.ModifiedAt).format('LL');
                 $scope.parentList[pos] = _parent;

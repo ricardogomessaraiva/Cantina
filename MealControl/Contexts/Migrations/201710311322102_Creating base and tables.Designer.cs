@@ -7,13 +7,13 @@ namespace Contexts.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Firstuserasadeveloper : IMigrationMetadata
+    public sealed partial class Creatingbaseandtables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Firstuserasadeveloper));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Creatingbaseandtables));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710161645258_First user as a developer"; }
+            get { return "201710311322102_Creating base and tables"; }
         }
         
         string IMigrationMetadata.Source

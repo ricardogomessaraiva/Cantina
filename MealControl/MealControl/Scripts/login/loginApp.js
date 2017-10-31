@@ -13,17 +13,27 @@ app.controller('loginCtrl', function ($scope, $http) {
 
         $scope.loading = true;
 
-        $http({
-            method: 'POST',
-            url: 'Login/Validate',
-            data: { user: $scope.user }
-        }).then(function successCallback(response) {
-            window.location.href = 'Home';
-        }, function errorCallback(response) {            
-            $scope.response = { code: response.status, text: response.statusText };
+        //$http({
+        //    method: 'POST',
+        //    url: 'Login/Validate',
+        //    data: { user: $scope.user }
+        //}).then(function successCallback(response) {
+        //    window.location.href = 'Home';
+        //}, function errorCallback(response) {            
+        //    $scope.response = { code: response.status, text: response.statusText };
 
-            $scope.formLogin.$setPristine();
-            $scope.loading = false;
-        });
+        //    $scope.formLogin.$setPristine();
+        //    $scope.loading = false;
+        //});
+
+        $http.post('Login/Validate', { user: $scope.user })
+          .then(function successCallback(response) {
+              window.location.href = 'Home';
+          }, function errorCallback(response) {
+              $scope.response = { code: response.status, text: response.statusText };
+
+              $scope.formLogin.$setPristine();
+              $scope.loading = false;
+          });
     }
 });

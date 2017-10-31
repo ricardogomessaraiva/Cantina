@@ -13,7 +13,7 @@ namespace MealControl.Models
         private const string SmtpHost = "smtp.live.com";
         private const int SmtpPort = 587;
         private const string SmtpUsername = "ricardogomessaraiva@hotmail.com";
-        private const string SmtpPassword = "";
+        private const string SmtpPassword = "MINHA-SENHA-AQUI";
         private const string MailFrom = "ricardogomessaraiva@hotmail.com";
         private string Mailto { get; set; }
         private string Subject { get; set; }

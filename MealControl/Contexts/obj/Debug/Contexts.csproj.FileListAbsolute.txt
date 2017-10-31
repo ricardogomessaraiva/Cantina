@@ -52,6 +52,7 @@ D:\PROJETOS PF\git\Cantina\MealControl\Contexts\bin\Debug\EntityFramework.SqlSer
 D:\PROJETOS PF\git\Cantina\MealControl\Contexts\obj\Debug\Contexts.csprojResolveAssemblyReference.cache
 D:\PROJETOS PF\git\Cantina\MealControl\Contexts\obj\Debug\Contexts.dll
 D:\PROJETOS PF\git\Cantina\MealControl\Contexts\obj\Debug\Contexts.pdb
-D:\PROJETOS PF\git\Cantina\MealControl\Contexts\obj\Debug\Contexts.Migrations.Creationbaseandaddingfirstdatas.resources
+D:\PROJETOS PF\git\Cantina\MealControl\Contexts\obj\Debug\Contexts.Migrations.Creatingbaseandtables.resources
 D:\PROJETOS PF\git\Cantina\MealControl\Contexts\obj\Debug\Contexts.csproj.GenerateResource.Cache
-D:\PROJETOS PF\git\Cantina\MealControl\Contexts\obj\Debug\Contexts.Migrations.Firstuserasadeveloper.resources
+D:\PROJETOS PF\git\Cantina\MealControl\Contexts\obj\Debug\Contexts.Migrations.Addingfirstsdatas.resources
+D:\PROJETOS PF\git\Cantina\MealControl\Contexts\obj\Debug\Contexts.Migrations.Addingusersasadeveloperandadministrator.resources

@@ -1,0 +1,177 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/directives/ui-alert-errors.js"></script>
+<script src="~/Scripts/product/product.js"></script>
+
+<div ng-controller="productCtrl">
+    <!-- BEGIN PAGE HEADER BREADCRUMB-->
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-user"></i>
+                <a href="#">Produto</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#">Cadastro</a>
+            </li>
+        </ul>
+    </div>
+    <!-- END PAGE HEADER BREADCRUMB-->
+    <!--DIRECTIVE TO SHOW ERRORS-->
+    <ui-alert> </ui-alert>
+    <!--------------------------->
+
+    <!--FORM CATEGORY BEGIN-->
+    <form name="formCategory" role="form" novalidate>
+        <!-- FORM PRODUCT BEGIN -->
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption font-green">
+                    <i class="fa fa-user font-green"></i>
+                    <span class="caption-subject bold uppercase"> Cadastro de categoria</span>
+                    <span class="caption-helper"></span>
+                </div>
+                <div class="actions">
+                    <a title="Alterar dados salvos" class="btn btn-circle btn-default btn-sm">
+                        <i class="fa fa-pencil"></i> Editar
+                    </a>
+                    <a title="Excluir o cadastro" class="btn btn-circle btn-default btn-sm">
+                        <i class="fa fa-times"></i> Excluir
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-body">
+                    <div class="row">
+                        <!--Filtros-->
+                        <div class="col-md-12" ng-class="{'has-success': formCategory.name.$valid, 'has-error': formCategory.name.$invalid}">
+                            <label>Nome</label>
+                            <div class="input-icon right input-icon-lg">
+                                <i class="fa tooltips" data-original-title="Campo obrigatório" data-container="body"
+                                   ng-class="{'fa-check': formCategory.name.$valid, 'fa-exclamation-circle': formCategory.name.$invalid}"></i>
+                                <input required name="name" type="text" ng-model="Category.Name" class="form-control input-lg" placeholder="Nome categoria">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12" ng-class="{'has-success': formCategory.description.$valid, 'has-error': formCategory.description.$invalid}">
+                            <label>Descrição</label>
+                            <div class="input-icon right input-icon-lg">
+                                <i class="fa fa-exclamation-circle tooltips" data-original-title="Campo obrigatório" data-container="body"
+                                   ng-class="{'fa-check': formCategory.description.$valid, 'fa-exclamation-circle': formCategory.description.$invalid}"></i>
+                                <input required name="description" type="text" ng-model="Category.Description" class="form-control input-lg" placeholder="Descrição categoria">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FOM PRODUCT END-->
+
+    </form>
+
+    <!--ACTIONS BUTTONS BEGIN-->
+    <div class="portlet-body">
+        <div class="form-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <button ng-click="save()" type="button" class="btn green">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--ACTIONS BUTTONS END-->
+    <!--FORM CATEGORIA ENDS-->
+
+    <hr />
+
+    <!--FORM PRODUCTS BEGIN-->
+    <form name="formProduct" role="form" novalidate>
+        <!-- FORM PRODUCT BEGIN -->
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption font-green">
+                    <i class="fa fa-user font-green"></i>
+                    <span class="caption-subject bold uppercase"> Cadastro de Produto</span>
+                    <span class="caption-helper"></span>
+                </div>
+                <div class="actions">
+                    <a title="Alterar dados salvos" class="btn btn-circle btn-default btn-sm">
+                        <i class="fa fa-pencil"></i> Editar
+                    </a>
+                    <a title="Excluir o cadastro" class="btn btn-circle btn-default btn-sm">
+                        <i class="fa fa-times"></i> Excluir
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-body">
+                    <div class="row">
+                        <!--Filtros-->
+                        <div class="col-md-12" ng-class="{'has-success': formProduct.name.$valid, 'has-error': formProduct.name.$invalid}">
+                            <label>Nome</label>
+                            <div class="input-icon right input-icon-lg">
+                                <i class="fa tooltips" data-original-title="Campo obrigatório" data-container="body"
+                                   ng-class="{'fa-check': formProduct.name.$valid, 'fa-exclamation-circle': formProduct.name.$invalid}"></i>
+                                <input required name="name" type="text" ng-model="Product.Name" class="form-control input-lg" placeholder="Nome produto">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12" ng-class="{'has-success': formProduct.description.$valid, 'has-error': formProduct.description.$invalid}">
+                            <label>Descrição</label>
+                            <div class="input-icon right input-icon-lg">
+                                <i class="fa fa-exclamation-circle tooltips" data-original-title="Campo obrigatório" data-container="body"
+                                   ng-class="{'fa-check': formProduct.description.$valid, 'fa-exclamation-circle': formProduct.description.$invalid}"></i>
+                                <input required name="description" type="text" ng-model="Product.Description" class="form-control input-lg" placeholder="Descrição produto">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Categoria</label>
+                            <div>
+                                @*<select class="form-control input-lg" ng-model="baseParent.Status" ng-options="s as s.Description for s in baseStatus"></select>*@
+                                <select class="form-control input-lg" ng-model="Product.Category">
+                                    <option>Categoria 1</option>
+                                    <option>Categoria 2</option>
+                                    <option>Categoria 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-class="{'has-success': formProduct.price.$valid, 'has-error': formProduct.price.$invalid}">
+                            <label>Preço</label>
+                            <div class="input-icon right input-icon-lg">
+                                <i class="fa fa-exclamation-circle tooltips" data-original-title="Campo obrigatório" data-container="body"
+                                   ng-class="{'fa-check': formProduct.price.$valid, 'fa-exclamation-circle': formProduct.price.$invalid}"></i>
+                                <input required name="price" type="text" ng-model="Product.Price" class="form-control input-lg" placeholder="Preço produto">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FOM PRODUCT END-->
+
+    </form>
+    <!--FORM PRODUCTS ENDS-->
+
+    <!--ACTIONS BUTTONS BEGIN-->
+    <div class="portlet-body">
+        <div class="form-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <button ng-click="save()" type="button" class="btn green">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--ACTIONS BUTTONS END-->
+    <!--FORM CATEGORIA ENDS-->
+</div>

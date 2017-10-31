@@ -129,7 +129,9 @@
     <Content Include="Content\themes\assets\global\plugins\countdown\plugin\jquery.countdown.js" />
     <Content Include="Content\themes\assets\global\plugins\countdown\plugin\jquery.countdown.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="Mail.html" />
+    <Content Include="Scripts\product\product.js" />
+    <Content Include="ViewsEmails\AccessGranted.html" />
+    <Content Include="ViewsEmails\WaitingEvaluation.html" />
     <Content Include="Scripts\angular-bootstrap.js" />
     <Content Include="Scripts\angular-modules.js" />
     <Content Include="Scripts\angular-pagination.js" />
@@ -464,6 +466,7 @@
     <Compile Include="Controllers\ConfirmacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -531,6 +534,7 @@
     <Content Include="Views\Cadastrados\Index.cshtml" />
     <Content Include="Content\themes\assets\global\plugins\bootstrap-modal\LICENSE" />
     <Content Include="Content\themes\assets\global\plugins\bootstrap-modal\README.md" />
+    <Content Include="Views\Produtos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

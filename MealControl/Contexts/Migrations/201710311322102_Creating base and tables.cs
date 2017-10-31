@@ -3,10 +3,22 @@ namespace Contexts.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Creationbaseandaddingfirstdatas : DbMigration
+    public partial class Creatingbaseandtables : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Category",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, unicode: false),
+                        Description = c.String(unicode: false),
+                        CreatedAt = c.DateTime(nullable: false, precision: 0),
+                        ModifiedAt = c.DateTime(nullable: false, precision: 0),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Parent",
                 c => new
@@ -79,6 +91,22 @@ namespace Contexts.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Product",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, unicode: false),
+                        Description = c.String(unicode: false),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        CreatedAt = c.DateTime(nullable: false, precision: 0),
+                        ModifiedAt = c.DateTime(nullable: false, precision: 0),
+                        Category_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Category", t => t.Category_Id, cascadeDelete: true)
+                .Index(t => t.Category_Id);
+            
+            CreateTable(
                 "dbo.UserType",
                 c => new
                     {
@@ -115,23 +143,27 @@ namespace Contexts.Migrations
         {
             DropForeignKey("dbo.User", "Type_Id", "dbo.UserType");
             DropForeignKey("dbo.User", "Status_Id", "dbo.Status");
+            DropForeignKey("dbo.Product", "Category_Id", "dbo.Category");
             DropForeignKey("dbo.Student", "Parent_Id", "dbo.Parent");
             DropForeignKey("dbo.Student", "Period_Id", "dbo.Period");
             DropForeignKey("dbo.Parent", "Status_Id", "dbo.Status");
             DropForeignKey("dbo.Phone", "Parent_Id", "dbo.Parent");
             DropIndex("dbo.User", new[] { "Type_Id" });
             DropIndex("dbo.User", new[] { "Status_Id" });
+            DropIndex("dbo.Product", new[] { "Category_Id" });
             DropIndex("dbo.Student", new[] { "Parent_Id" });
             DropIndex("dbo.Student", new[] { "Period_Id" });
             DropIndex("dbo.Phone", new[] { "Parent_Id" });
             DropIndex("dbo.Parent", new[] { "Status_Id" });
             DropTable("dbo.User");
             DropTable("dbo.UserType");
+            DropTable("dbo.Product");
             DropTable("dbo.Period");
             DropTable("dbo.Student");
             DropTable("dbo.Status");
             DropTable("dbo.Phone");
             DropTable("dbo.Parent");
+            DropTable("dbo.Category");
         }
     }
 }

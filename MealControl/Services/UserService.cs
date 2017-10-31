@@ -13,15 +13,15 @@ namespace Services
 {
     public class UserService
     {
-        const int STATUS_EVERYONE = 0;//Do not existe at database, just to ignore as a status in a filter
-        const int STATUS_ACTIVE = 1;
-        const int STATUS_INACTIVE = 2;
-        const int STATUS_WAITING_EVALUATION = 3;
-        const int STATUS_BLOCKED = 4;
+        private const int STATUS_EVERYONE = 0; //Don't exists at database, just to ignore in a filter
+        private const int STATUS_ACTIVE = 1;
+        private const int STATUS_INACTIVE = 2;
+        private const int STATUS_WAITING_EVALUATION = 3;
+        private const int STATUS_BLOCKED = 4;
 
         readonly MealEntities Entity = new MealEntities();
 
-        public ICollection<DbValidationError> Validate(Parent parent)
+        public List<DbValidationError> Validate(Parent parent)
         {
             if (parent.Students.Count == 0)
                 parent.Students = null;
@@ -39,7 +39,7 @@ namespace Services
                     errors.Add(new DbValidationError("Email", "Digite um e-mail válido."));
             }
 
-            if (parent.Status.Id == STATUS_WAITING_EVALUATION && Entity.Parent.Any(s => s.Email == parent.Email))
+            if (parent.Status.Id == STATUS_WAITING_EVALUATION && parent.Id == 0 && Entity.Parent.Any(s => s.Email == parent.Email))
                 errors.Add(new DbValidationError("Email", "Já existe um usuário cadastrado com este email."));
 
             if (parent.Students != null)
@@ -62,28 +62,39 @@ namespace Services
 
         public Parent Insert(Parent parent)
         {
-            var model = Entity.Parent.Add(parent);
-            Entity.SaveChanges();
+            var entity = new MealEntities();
+            parent.Status = entity.Status.FirstOrDefault(s => s.Id == STATUS_WAITING_EVALUATION);
+            //Set user period by period id
+            parent.Students.ForEach(s =>
+            {
+                s.Period = entity.Period.First(p => p.Id == s.Period.Id);
+            });
+
+            var model = entity.Parent.Add(parent);
+            entity.SaveChanges();
             return model;
         }
 
         public Parent Update(Parent parent)
         {
-            Parent _parent = Entity.Parent.SingleOrDefault(s => s.Id == parent.Id);
-            Entity.Phone.RemoveRange(_parent.Phone);
-            Entity.Students.RemoveRange(_parent.Students);
-            Entity.Parent.Remove(_parent);
+            var entity = new MealEntities();
+
+            Parent _parent = entity.Parent.SingleOrDefault(s => s.Id == parent.Id);
+            entity.Phone.RemoveRange(_parent.Phone);
+            entity.Students.RemoveRange(_parent.Students);
+            entity.Parent.Remove(_parent);
 
             parent.Students.ForEach(student =>
             {
                 student.Period = Entity.Period.Find(student.Period.Id);
             });
 
-            parent.Status = Entity.Status.Find(parent.Status.Id);
+            parent.Status = entity.Status.Find(parent.Status.Id);
+            parent.Status = entity.Status.FirstOrDefault(x => x.Id == parent.Status.Id);
             parent.ModifiedAt = DateTime.Now;
-            Entity.Parent.Add(parent);
+            entity.Parent.Add(parent);
 
-            return Entity.SaveChanges() > 0 ? parent : null;
+            return entity.SaveChanges() > 0 ? parent : null;
         }
 
         public Parent GetUser(Parent parent)
@@ -100,7 +111,7 @@ namespace Services
 
         public List<Parent> GetParents(Parent parent)
         {
-            if (parent.Status == null)
+            if (parent.Status != null && parent.Status.Id == STATUS_EVERYONE)
             {
                 return Entity.Parent
                             .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&
@@ -110,21 +121,21 @@ namespace Services
                             .ToList();
             }
 
-            if (parent.Status.Id == STATUS_INACTIVE)
+            if (parent.Status != null)
             {
                 return Entity.Parent
-                  .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&
-                              x.UserName.Contains((parent.UserName != null ? parent.UserName : x.UserName)) &&
-                              x.Email.Contains((parent.Email != null ? parent.Email : x.Email)))
-                   .OrderBy(x => x.CreatedAt)
-                   .ToList();
+                    .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&
+                                x.UserName.Contains((parent.UserName != null ? parent.UserName : x.UserName)) &&
+                                x.Email.Contains((parent.Email != null ? parent.Email : x.Email)) &&
+                                x.Status.Id == parent.Status.Id)
+                    .OrderBy(x => x.CreatedAt)
+                    .ToList();
             }
 
             return Entity.Parent
                     .Where(x => x.Name.Contains((parent.Name != null ? parent.Name : x.Name)) &&
                                 x.UserName.Contains((parent.UserName != null ? parent.UserName : x.UserName)) &&
-                                x.Email.Contains((parent.Email != null ? parent.Email : x.Email)) &&
-                                x.Status.Description == parent.Status.Description)
+                                x.Email.Contains((parent.Email != null ? parent.Email : x.Email)))
                     .OrderBy(x => x.CreatedAt)
                     .ToList();
         }

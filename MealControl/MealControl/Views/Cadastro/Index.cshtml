@@ -13,7 +13,7 @@
         <ul class="page-breadcrumb">
             <li>
                 <i class="fa fa-user"></i>
-                <a href="#">Cadastro</a>
+                <a href="#">Usuário</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
@@ -123,10 +123,7 @@
                                     <div class="table-scrollable">
                                         <table class="table table-striped table-bordered table-advance table-hover">
                                             <thead>
-                                                <tr>
-                                                    @*<th>
-                                                            <i class="fa fa-cogs"></i> Tipo
-                                                        </th>*@
+                                                <tr>                                                  
                                                     <th class="hidden-xs">
                                                         <i class="fa fa-phone"></i> Telefone
                                                     </th>
@@ -139,7 +136,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="phone in phones track by $index">
+                                                <tr ng-repeat="phone in phonesList track by $index">
                                                     <td>
                                                         <div ng-class="{'has-success': formParent.phoneNumber.$valid, 'has-error': formParent.phoneNumber.$invalid}">
                                                             <input maxlength="15" phone-mask required name="phoneNumber" ng-model="phone.Number"
@@ -168,7 +165,7 @@
         </div>
         <!--FOM User END-->
         <!--FORM STUDENT BEGIN-->
-        <div ng-repeat="student in students track by $index">
+        <div ng-repeat="student in studentsList track by $index">
             <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption font-green">

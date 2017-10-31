@@ -16,10 +16,13 @@ namespace Contexts.Migrations
 
         protected override void Seed(Contexts.MealEntities context)
         {
+            const int USER_TYPE_DEVELOPER = 1;
+            const int USER_TYPE_ADMINISTRADOR = 2;
+            const int USER_TYPE_USER = 3;
 
             /**
              * 
-             * * CREATE DATABASE AND CREATE TABLES*
+             * * ADDING FIRSTS DATAS
              */
 
             //context.Status.Add(new Status { Description = "Ativo" });
@@ -38,19 +41,31 @@ namespace Contexts.Migrations
 
             /**
             * 
-            * * CREATE FIRST USER AS AN DEVELOPER
+            * * ADDING FIRST USER AS AN DEVELOPER AND ADMIN
             */
 
-            //var hashedPass = BCrypt.Net.BCrypt.HashPassword("ricardo");
-            //context.User.Add(new User
-            //{
-            //    Name = "Ricardo Gomes Sariava",
-            //    UserName = "ricardo.saraiva",
-            //    Password = hashedPass,
-            //    Email = "ricardogomessaraiva@hotmail.com",
-            //    Type = context.Type.First(x => x.Id == 1),
-            //    Status = context.Status.First(x => x.Id == 1)
-            //});
+            string hashedPass = BCrypt.Net.BCrypt.HashPassword("ricardo");
+            context.User.Add(new User
+            {
+                Name = "Ricardo Gomes Sariava",
+                UserName = "ricardo.saraiva",
+                Password = hashedPass,
+                Email = "ricardogomessaraiva@hotmail.com",
+                Type = context.Type.First(x => x.Id == USER_TYPE_DEVELOPER),
+                Status = context.Status.First(x => x.Id == 1)
+            });
+
+            hashedPass = BCrypt.Net.BCrypt.HashPassword("admin");
+            context.User.Add(new User
+            {
+                Name = "Administrador",
+                UserName = "admin",
+                Password = hashedPass,
+                Email = "ricardogomessaraiva@hotmail.com",
+                Type = context.Type.First(x => x.Id == USER_TYPE_ADMINISTRADOR),
+                Status = context.Status.First(x => x.Id == 1)
+            });
+            
         }
     }
 }

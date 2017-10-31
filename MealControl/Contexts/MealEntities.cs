@@ -13,6 +13,8 @@ namespace Contexts
         public DbSet<Status> Status { get; set; }
         public DbSet<UserType> Type { get; set; }
         public DbSet<Period> Period { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet <Product> Product { get; set; }
 
         public MealEntities()
             : base("MealEntities")

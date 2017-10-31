@@ -1,7 +1,7 @@
 ﻿app.controller('cadastroCtrl', function ($scope, $http, factory) {
     angular.element('#cadastro-usuario').addClass("start active open");
-    $scope.phones = [{ Number: null }];
-    $scope.students = factory.createStudent;
+    $scope.phonesList = [{ Number: null }];
+    $scope.studentsList = [{ Name: null, BirthDate: null, Period: null }];
     $scope.Parent = factory.createParent;
     $scope.retypeEmail = null;
 
@@ -14,8 +14,8 @@
 
     $scope.save = function () {
         $scope.errors = [];
-        $scope.Parent.Phone = angular.copy($scope.phones)
-        $scope.Parent.Students = angular.copy($scope.students);
+        $scope.Parent.Phone = angular.copy($scope.phonesList)
+        $scope.Parent.Students = angular.copy($scope.studentsList);
 
         $scope.Parent.Phone.forEach(function (phone, i) {
             if (!phone.Number)
@@ -30,7 +30,7 @@
             else if (!student.Period)
                 $scope.Parent.Students.splice(i, 1);
         });
-
+        
         $http.post('Cadastro/Save', { parent: $scope.Parent }).then(success, error);
         function success(response) {
             if (response.status == 201)//CREATED
@@ -46,17 +46,16 @@
     };
 
     $scope.addPhone = function () {
-        $scope.phones.push({ Number: '' });
+        $scope.phonesList.push({ Number: '' });
     }
 
     $scope.removePhone = function (phone) {
-        var pos = $scope.phones.indexOf(phone);
-        $scope.phones.splice(pos, 1);
+        var pos = $scope.phonesList.indexOf(phone);
+        $scope.phonesList.splice(pos, 1);
     }
 
     $scope.addStudent = function () {
-        var student = factory.createStudent;
-        $scope.students.push(student);
+        $scope.studentsList.push({ Name: null, BirthDate: null, Period: null });
     }
 
     $scope.removeStudent = function (i) {

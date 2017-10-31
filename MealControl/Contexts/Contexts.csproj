@@ -61,13 +61,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MealEntities.cs" />
-    <Compile Include="Migrations\201710161643134_Creation base and adding first datas.cs" />
-    <Compile Include="Migrations\201710161643134_Creation base and adding first datas.Designer.cs">
-      <DependentUpon>201710161643134_Creation base and adding first datas.cs</DependentUpon>
+    <Compile Include="Migrations\201710311322102_Creating base and tables.cs" />
+    <Compile Include="Migrations\201710311322102_Creating base and tables.Designer.cs">
+      <DependentUpon>201710311322102_Creating base and tables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710161645258_First user as a developer.cs" />
-    <Compile Include="Migrations\201710161645258_First user as a developer.Designer.cs">
-      <DependentUpon>201710161645258_First user as a developer.cs</DependentUpon>
+    <Compile Include="Migrations\201710311324520_Adding firsts datas.cs" />
+    <Compile Include="Migrations\201710311324520_Adding firsts datas.Designer.cs">
+      <DependentUpon>201710311324520_Adding firsts datas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710311331332_Adding users as a developer and administrator.cs" />
+    <Compile Include="Migrations\201710311331332_Adding users as a developer and administrator.Designer.cs">
+      <DependentUpon>201710311331332_Adding users as a developer and administrator.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,11 +87,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710161643134_Creation base and adding first datas.resx">
-      <DependentUpon>201710161643134_Creation base and adding first datas.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710311322102_Creating base and tables.resx">
+      <DependentUpon>201710311322102_Creating base and tables.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710161645258_First user as a developer.resx">
-      <DependentUpon>201710161645258_First user as a developer.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710311324520_Adding firsts datas.resx">
+      <DependentUpon>201710311324520_Adding firsts datas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710311331332_Adding users as a developer and administrator.resx">
+      <DependentUpon>201710311331332_Adding users as a developer and administrator.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

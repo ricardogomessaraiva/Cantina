@@ -29,7 +29,7 @@ namespace UserTest
                 Password = "12345",
                 Email = "ricardogomessaraiva@hotmail.com",
                 //Type = entity.Type.FirstOrDefault(s => s.Id == 3),
-                Phone = new List<Phone> { new Phone { Number = 11986841296 } },
+                Phone = new List<Phone> { new Phone { Number = "(11)98684-1296" } },
                 Status = entity.Status.FirstOrDefault(s => s.Id == 1),
                 Students = new List<Student>
                 {
@@ -65,7 +65,7 @@ namespace UserTest
                 },
                 Email = "new_user@hotmail.com",
                 //Type = entity.Type.FirstOrDefault(s => s.Id == 3),
-                Phone = new List<Phone> { new Phone { Number = 11986841296 } },
+                Phone = new List<Phone> { new Phone { Number = "(11)98684-1296" } },
                 Status = entity.Status.FirstOrDefault(s => s.Id == 1)                
             };
 
@@ -83,7 +83,7 @@ namespace UserTest
                 Password = "12345",
                 Email = "ricardogomessaraiva@hotmail.com",
                 //Type = entity.Type.FirstOrDefault(s => s.Id == 3),
-                Phone = new List<Phone> { new Phone { Number = 1136022451 } },
+                Phone = new List<Phone> { new Phone { Number = "(11)3602-2451" } },
                 Status = entity.Status.FirstOrDefault(s => s.Id == 1),
                 Students = new List<Student>
                 {
@@ -110,7 +110,7 @@ namespace UserTest
                 Password = "12345",
                 Email = "ricardogomessaraiva@com",
                 //Type = entity.Type.FirstOrDefault(s => s.Id == 3),
-                Phone = new List<Phone> { new Phone { Number = 1136022451 } },
+                Phone = new List<Phone> { new Phone { Number = "(11)3602-2451" } },
                 Status = entity.Status.FirstOrDefault(s => s.Id == 1),
                 Students = new List<Student>
                 {
@@ -137,7 +137,7 @@ namespace UserTest
                 Password = "12345",
                 Email = "new_user@hotmail.com",
                 //Type = entity.Type.FirstOrDefault(s => s.Id == 3),
-                Phone = new List<Phone> { new Phone { Number = 1136022451 } },
+                Phone = new List<Phone> { new Phone { Number = "(11)3602-2451" } },
                 Status = entity.Status.FirstOrDefault(s => s.Id == 1),
                 Students = new List<Student>
                 {
@@ -164,7 +164,7 @@ namespace UserTest
                 Password = "12345",
                 Email = "new_user@hotmail.com",
                 //Type = entity.Type.FirstOrDefault(s => s.Id == 3),
-                Phone = new List<Phone> { new Phone { Number = 0 } },
+                Phone = new List<Phone> { new Phone { Number = "" } },
                 Status = entity.Status.FirstOrDefault(s => s.Id == 1),
                 Students = new List<Student>
                 {
